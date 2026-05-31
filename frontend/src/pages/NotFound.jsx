@@ -2,30 +2,24 @@ import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import SEO from "../components/SEO.jsx";
 
-/**
- * 404 — printed errata page.
- *
- * Treated like a missing page in a magazine: a small typographic
- * notice, the relevant folio numbers, and a return-to-cover.
- */
 export default function NotFound() {
   return (
     <PageTransition>
-      <SEO title="Errata · Page not found" path="/404" noindex />
-      <section className="surface-paper min-h-[80vh] flex items-center">
-        <div className="page-narrow text-center py-20">
-          <p className="t-eyebrow text-cabernet-500 mb-5">§ Errata · pg. 0</p>
-          <h1 className="t-headline text-print mb-7">
-            This page is not in the publication.
+      <SEO title="Page not found" path="/404" noindex />
+      <section className="surface-white min-h-[78vh] flex items-center">
+        <div className="container-text text-center py-24">
+          <p className="t-eyebrow text-orange-600 mb-5">Error · 404</p>
+          <h1 className="t-headline text-ink mb-7 text-balance">
+            The page you requested could not be located.
           </h1>
-          <p className="font-italic italic text-[18px] md:text-[20px] text-walnut mb-10 max-w-md mx-auto leading-relaxed">
-            The folio you asked for has not been set, or the printer
-            misnumbered the running head. Either way, the cover
-            remains in print.
+          <p className="t-dek text-dim mb-10 max-w-xl mx-auto">
+            The link may be out of date, the page may have moved, or the URL may
+            contain a typographic error. Please return to the home page or contact us.
           </p>
-          <Link to="/" className="btn-letterpress btn-letterpress-cabernet">
-            ↺ &nbsp; Return to the cover
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center gap-3">
+            <Link to="/" className="btn btn-navy">Return to home</Link>
+            <Link to="/contact" className="btn btn-outline">Contact us</Link>
+          </div>
         </div>
       </section>
     </PageTransition>
