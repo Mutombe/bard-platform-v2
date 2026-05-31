@@ -78,7 +78,7 @@ export default function AudienceTiles({ heading = "Banking experiences" }) {
 
         <div className="text-center mt-10 md:mt-12">
           <Link to="/contact" className="btn btn-primary">
-            Become a client
+            Become a client of the House
             <ArrowRightIcon size={14} weight="bold" />
           </Link>
         </div>

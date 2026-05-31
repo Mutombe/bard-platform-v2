@@ -175,7 +175,7 @@ export default function Login() {
             <p className="mt-4 text-center text-[12.5px] text-bone-600">
               New to Bard Santner?{" "}
               <Link to="/personal" className="text-orange-600 font-medium hover:underline">
-                Open an account
+                Open a Current
               </Link>
             </p>
 

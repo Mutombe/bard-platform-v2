@@ -28,8 +28,8 @@ export default function Personal() {
         eyebrow={audience.eyebrow}
         headline="Everyday banking, built around your life."
         body="Accounts, savings and credit for the rhythm of a household."
-        primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
-        secondaryCTA={{ to: "/contact?audience=personal", label: "Speak to a personal banker" }}
+        primaryCTA={{ to: "/products/everyday-account", label: "Open the Current" }}
+        secondaryCTA={{ to: "/contact?audience=personal", label: "Open a household conversation" }}
         image={HERO.personal}
         overlayTint="ink"
       />

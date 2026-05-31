@@ -19,11 +19,11 @@ export default function Banking() {
         jsonLd={[breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Banking", path: "/banking" }])]}
       />
       <PageHero
-        eyebrow="§ Banking"
-        headline="Every account on one shelf."
-        body="Personal, business, private and institutional banking, organised by what they do."
-        primaryCTA={{ to: "/products/everyday-account", label: "Open an Everyday Account" }}
-        secondaryCTA={{ to: "/contact", label: "Speak to a banker" }}
+        eyebrow="§ Chapter IV · The Bank"
+        headline="Every instrument on one shelf."
+        body="For households, for commerce, for the considered, for institutions — organised by what they do."
+        primaryCTA={{ to: "/products/everyday-account", label: "Open the Current" }}
+        secondaryCTA={{ to: "/contact", label: "Open a conversation" }}
         image={HERO.banking}
         overlayTint="navy"
       />

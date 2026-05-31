@@ -87,10 +87,10 @@ export default function ProductDetail() {
               </p>
               <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-3 mb-5 md:mb-6">
                 <Link to={`/contact?product=${p.slug}`} className="btn btn-primary w-full sm:w-auto justify-center">
-                  Apply for {p.name} <ArrowRightIcon size={14} weight="bold" />
+                  Open the {p.name} <ArrowRightIcon size={14} weight="bold" />
                 </Link>
                 <Link to="/contact" className="btn btn-ghost-light w-full sm:w-auto justify-center">
-                  Speak to a banker
+                  Open a conversation
                 </Link>
               </div>
               <p className="text-[11.5px] text-bone-500">

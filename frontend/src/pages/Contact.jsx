@@ -88,7 +88,7 @@ export default function Contact() {
             <div className="col-span-12 md:col-span-5">
               <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
                 <span className="h-[2px] w-10 md:w-12 bg-orange-500" />
-                <p className="eyebrow eyebrow-accent">§ Request a banker</p>
+                <p className="eyebrow eyebrow-accent">§ The Door · Open a conversation</p>
               </div>
               <h2 className="display-xl text-navy-600 text-balance mb-5 md:mb-7 leading-[1.05]">
                 Tell us what you are looking for.
@@ -176,7 +176,7 @@ export default function Contact() {
                       We use your details only to respond to this enquiry. See <a href="/privacy" className="underline hover:text-navy-600">Privacy</a>.
                     </p>
                     <button type="submit" className="btn btn-primary w-full md:w-auto justify-center">
-                      Request a banker <ArrowRightIcon size={14} weight="bold" />
+                      Open the conversation <ArrowRightIcon size={14} weight="bold" />
                     </button>
                   </div>
                 </form>

@@ -28,8 +28,8 @@ export default function Institutional() {
         eyebrow={audience.eyebrow}
         headline="Treasury. Markets. Advisory."
         body="Liquidity, custody, debt origination and the correspondent banking memory institutional treasury requires."
-        primaryCTA={{ to: "/products/treasury-services", label: "Treasury Services" }}
-        secondaryCTA={{ to: "/contact?audience=institutional", label: "Speak to an institutional banker" }}
+        primaryCTA={{ to: "/products/treasury-services", label: "Approach the Treasury desk" }}
+        secondaryCTA={{ to: "/contact?audience=institutional", label: "Open a conversation with the desk" }}
         image={HERO.institutional}
         overlayTint="ink"
       />

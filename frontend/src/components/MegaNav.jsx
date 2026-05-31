@@ -28,182 +28,189 @@ import { HERO, MARQUEE } from "../data/images.js";
  * mobile (drawer). Esc closes; click-outside closes.
  */
 
+// V2 — six chapters of the editorial letter.
+// URLs unchanged; labels rewritten in the heritage publication voice.
 const PRIMARY_NAV = [
-  { id: "banking", label: "Banking", to: "/banking" },
-  { id: "wealth", label: "Wealth", to: "/wealth" },
-  { id: "markets", label: "Markets", to: "/markets" },
-  { id: "insights", label: "Insights", to: "/insights" },
-  { id: "group", label: "Group", to: "/group" },
-  { id: "about", label: "About", to: "/about" },
+  { id: "banking",  label: "The Bank",   to: "/banking" },
+  { id: "wealth",   label: "The Counsel",to: "/wealth" },
+  { id: "markets",  label: "The Desk",   to: "/markets" },
+  { id: "insights", label: "The Almanac",to: "/insights" },
+  { id: "group",    label: "The House",  to: "/group" },
+  { id: "about",    label: "Provenance", to: "/about" },
 ];
 
-/* ── Mega-panel content per primary item ────────────────────────── */
+/* ── Mega-panel content per chapter — heritage publication voice ──
+   v1's plain "Open an Account / Speak to a banker" is replaced
+   throughout with editorial naming: "Open a Current", "Open a private
+   conversation", "Through the Wire", "The Almanac", etc. Featured
+   panel titles, column headings and sub-link labels all moved.
+   URLs unchanged. */
 const PANELS = {
   banking: {
-    eyebrow: "§ 04 · Banking",
-    title: "Banking",
+    eyebrow: "§ Chapter IV · The Bank",
+    title: "The Bank",
     description:
-      "Every banking product on a single shelf — personal, business, private and institutional. Anchored in Africa.",
+      "Every instrument on a single shelf — for households, for commerce, for the considered, for institutions. Anchored in Harare.",
     featured: {
-      eyebrow: "Featured",
-      title: "Everyday Account",
-      body: "Salary in, bills out, debit card in pocket. No monthly fee for the first twelve months.",
-      cta: { label: "Open an Everyday Account", to: "/products/everyday-account" },
+      eyebrow: "Open a Current",
+      title: "The Current",
+      body: "Salary in, bills out, card in pocket. No annual fee for the first twelve months. The everyday instrument.",
+      cta: { label: "Open a Current", to: "/products/everyday-account" },
       image: HERO.banking,
     },
     columns: [
       {
-        heading: "Personal",
+        heading: "For Households",
         items: [
-          { label: "Everyday Account", to: "/products/everyday-account" },
-          { label: "Savings Plus", to: "/products/savings-account" },
-          { label: "Home Loan", to: "/products/home-loan" },
+          { label: "The Current",       to: "/products/everyday-account" },
+          { label: "The Savings Book",  to: "/products/savings-account" },
+          { label: "The Mortgage",      to: "/products/home-loan" },
         ],
       },
       {
-        heading: "Business",
+        heading: "For Commerce",
         items: [
-          { label: "Business Account", to: "/products/business-account" },
-          { label: "Working Capital", to: "/products/working-capital" },
-          { label: "Trade Finance", to: "/products/trade-finance" },
+          { label: "The Operating Account", to: "/products/business-account" },
+          { label: "Working Capital",       to: "/products/working-capital" },
+          { label: "Cross-border Trade",    to: "/products/trade-finance" },
         ],
       },
       {
-        heading: "Digital",
+        heading: "Through the Wire",
         items: [
-          { label: "Online Banking", to: "/online-banking" },
-          { label: "Log in", to: "/login" },
-          { label: "Preview the app", to: "/app" },
+          { label: "Through the Wire",       to: "/online-banking" },
+          { label: "Enter the Lobby (Log in)", to: "/login" },
+          { label: "Glimpse the App",        to: "/app" },
         ],
       },
     ],
     insight: {
-      eyebrow: "Reading",
+      eyebrow: "From the Almanac",
       title: "The quiet case for a deposit base",
       to: "/insights/the-quiet-case-for-a-deposit-base",
     },
   },
   wealth: {
-    eyebrow: "§ 05 · Wealth",
-    title: "Bard Santner Wealth",
+    eyebrow: "§ Chapter V · The Counsel",
+    title: "The Counsel",
     description:
-      "Discretionary mandates, advisory portfolios and the long counsel of an international house — anchored in Africa.",
+      "Discretionary mandates, advisory portfolios and the long counsel of an international house — anchored in Africa. Patient capital, patient counsel.",
     featured: {
-      eyebrow: "Mandates",
-      title: "Wealth Management",
-      body: "Patient capital. Patient counsel. Discretionary mandates for African and international families.",
-      cta: { label: "Explore Wealth", to: "/wealth" },
+      eyebrow: "Discretionary",
+      title: "Discretionary Mandate",
+      body: "The long horizon, written down. Patient capital and patient counsel for households of established consequence.",
+      cta: { label: "Open a Mandate", to: "/wealth" },
       image: MARQUEE.wealth,
     },
     columns: [
       {
         heading: "Mandates",
         items: [
-          { label: "Discretionary", to: "/products/wealth-management" },
-          { label: "Advisory", to: "/products/wealth-management" },
-          { label: "Structured credit", to: "/products/structured-credit" },
+          { label: "Discretionary",     to: "/products/wealth-management" },
+          { label: "Advisory",          to: "/products/wealth-management" },
+          { label: "Structured Credit", to: "/products/structured-credit" },
         ],
       },
       {
         heading: "Pathways",
         items: [
-          { label: "Private Banking", to: "/private-banking" },
-          { label: "Family office", to: "/private-banking" },
-          { label: "Succession", to: "/private-banking" },
+          { label: "By Appointment",   to: "/private-banking" },
+          { label: "Family Office",    to: "/private-banking" },
+          { label: "Succession",       to: "/private-banking" },
         ],
       },
       {
-        heading: "Conversation",
+        heading: "Open a Conversation",
         items: [
-          { label: "Speak to a wealth banker", to: "/contact?audience=private" },
-          { label: "Leadership", to: "/leadership" },
-          { label: "Locations", to: "/locations" },
+          { label: "Open a private conversation", to: "/contact?audience=private" },
+          { label: "The Names",                    to: "/leadership" },
+          { label: "The Places",                   to: "/locations" },
         ],
       },
     ],
     insight: {
-      eyebrow: "Reading",
+      eyebrow: "From the Almanac",
       title: "Wealth and the second conversation",
       to: "/insights/wealth-and-the-second-conversation",
     },
   },
   markets: {
-    eyebrow: "§ 06 · Markets",
-    title: "Markets & Treasury",
+    eyebrow: "§ Chapter VI · The Desk",
+    title: "The Desk",
     description:
-      "Treasury, FX, debt capital markets origination and trade finance. The desk-grade infrastructure on which a serious treasurer runs an institution.",
+      "Treasury, FX, debt-capital-markets origination, trade finance. The desk-grade infrastructure on which a serious treasurer runs an institution.",
     featured: {
       eyebrow: "Origination",
-      title: "Debt Capital Markets",
-      body: "Originated, syndicated, settled. The capital-markets desk from the parent institution.",
-      cta: { label: "View Markets", to: "/markets" },
+      title: "Originated. Syndicated. Settled.",
+      body: "The capital-markets desk from the parent institution. Bonds, structured paper, syndicated facilities.",
+      cta: { label: "Approach the Desk", to: "/markets" },
       image: HERO.markets,
     },
     columns: [
       {
         heading: "Markets",
         items: [
-          { label: "Treasury Services", to: "/products/treasury-services" },
-          { label: "Foreign Exchange", to: "/products/foreign-exchange" },
-          { label: "Debt Capital Markets", to: "/products/debt-capital-markets" },
+          { label: "Treasury & FX",     to: "/products/treasury-services" },
+          { label: "Foreign Exchange",  to: "/products/foreign-exchange" },
+          { label: "Origination (DCM)", to: "/products/debt-capital-markets" },
         ],
       },
       {
-        heading: "Trade",
+        heading: "The Corridor",
         items: [
-          { label: "Trade Finance", to: "/products/trade-finance" },
-          { label: "International desk", to: "/international" },
-          { label: "Institutional", to: "/institutional" },
+          { label: "Trade Finance",        to: "/products/trade-finance" },
+          { label: "For the Diaspora",     to: "/international" },
+          { label: "For Institutions",     to: "/institutional" },
         ],
       },
       {
-        heading: "Conversation",
+        heading: "Open a Conversation",
         items: [
-          { label: "Speak to the desk", to: "/contact?audience=institutional" },
-          { label: "Leadership", to: "/leadership" },
+          { label: "Approach the desk", to: "/contact?audience=institutional" },
+          { label: "The Names",         to: "/leadership" },
         ],
       },
     ],
     insight: {
-      eyebrow: "Reading",
+      eyebrow: "From the Almanac",
       title: "Treasury and the discipline of the end-of-day",
       to: "/insights/treasury-and-the-discipline-of-the-end-of-day",
     },
   },
   insights: {
-    eyebrow: "§ 07 · Editorial",
-    title: "Insights",
+    eyebrow: "§ Chapter VII · The Almanac",
+    title: "The Almanac",
     description:
-      "Editorial commentary by the people who run the desks. Bardiq Journal carries the long form.",
+      "Editorial commentary by the people who run the desks. Bardiq Journal carries the long form. Quarterly print, weekly online.",
     featured: {
-      eyebrow: "Featured",
-      title: "The diaspora is not a niche",
+      eyebrow: "From the Almanac",
+      title: "The diaspora is not a niche.",
       body: "Remittance flows now exceed FDI in nine of Africa's largest economies. The diaspora is the primary capital allocator.",
-      cta: { label: "Read the piece", to: "/insights/the-diaspora-is-not-a-niche" },
+      cta: { label: "Read the entry", to: "/insights/the-diaspora-is-not-a-niche" },
       image: HERO.insights,
     },
     columns: [
       {
-        heading: "Themes",
+        heading: "By Subject",
         items: [
-          { label: "Trade finance", to: "/insights/africa-and-the-cross-border-rail" },
-          { label: "Banking strategy", to: "/insights/the-quiet-case-for-a-deposit-base" },
-          { label: "Diaspora", to: "/insights/the-diaspora-is-not-a-niche" },
+          { label: "On the Corridor", to: "/insights/africa-and-the-cross-border-rail" },
+          { label: "On Deposits",     to: "/insights/the-quiet-case-for-a-deposit-base" },
+          { label: "On the Diaspora", to: "/insights/the-diaspora-is-not-a-niche" },
         ],
       },
       {
-        heading: "Desks",
+        heading: "By Desk",
         items: [
-          { label: "Credit", to: "/insights/credit-when-the-rate-is-the-conversation" },
-          { label: "Treasury", to: "/insights/treasury-and-the-discipline-of-the-end-of-day" },
-          { label: "Wealth", to: "/insights/wealth-and-the-second-conversation" },
+          { label: "On Credit",   to: "/insights/credit-when-the-rate-is-the-conversation" },
+          { label: "On Treasury", to: "/insights/treasury-and-the-discipline-of-the-end-of-day" },
+          { label: "On Wealth",   to: "/insights/wealth-and-the-second-conversation" },
         ],
       },
       {
         heading: "Editions",
         items: [
-          { label: "Bardiq Journal", to: "/group/journal" },
-          { label: "All insights", to: "/insights" },
+          { label: "Bardiq Journal — Vol. II", to: "/group/journal" },
+          { label: "All entries",              to: "/insights" },
         ],
       },
     ],
@@ -214,100 +221,101 @@ const PANELS = {
     },
   },
   group: {
-    eyebrow: "§ 03 · The Group",
-    title: "Bard Santner Group",
+    eyebrow: "§ Chapter III · The House",
+    title: "The House",
     description:
       "Five institutions, one discipline. The bank at the centre; markets, lending, sport and editorial around it.",
     featured: {
       eyebrow: "The Bank",
       title: "Bard Santner Microfinance Bank",
-      body: "The flagship banking institution of the Group. Open the door at BSMFB.",
-      cta: { label: "Open with BSMFB", to: "/group/bsmfb" },
+      body: "The flagship deposit-taking institution of the House. Open the door at BSMFB.",
+      cta: { label: "Enter the Bank", to: "/group/bsmfb" },
       image: MARQUEE.wealth,
     },
     columns: [
       {
-        heading: "Institutions",
+        heading: "The Five",
         items: [
-          { label: "BSMFB — the bank", to: "/group/bsmfb" },
-          { label: "Markets Inc — capital markets", to: "/group/markets" },
-          { label: "Bard Loans — credit", to: "/group/loans" },
+          { label: "BSMFB — the bank",          to: "/group/bsmfb" },
+          { label: "Markets Inc — the parent",  to: "/group/markets" },
+          { label: "Bard Loans — credit",       to: "/group/loans" },
         ],
       },
       {
-        heading: "Adjacencies",
+        heading: "The Adjacencies",
         items: [
-          { label: "Bard Santner Golf", to: "/group/golf" },
-          { label: "Bardiq Journal", to: "/group/journal" },
+          { label: "Bard Santner Golf",   to: "/group/golf" },
+          { label: "Bardiq Journal",      to: "/group/journal" },
         ],
       },
       {
         heading: "Foundation",
         items: [
-          { label: "About the Group", to: "/about" },
-          { label: "Leadership", to: "/leadership" },
-          { label: "Locations", to: "/locations" },
+          { label: "Provenance",      to: "/about" },
+          { label: "The Names",       to: "/leadership" },
+          { label: "The Places",      to: "/locations" },
         ],
       },
     ],
     insight: {
-      eyebrow: "Reading",
+      eyebrow: "From the Almanac",
       title: "Becoming a bank",
       to: "/insights/becoming-a-bank",
     },
   },
   about: {
-    eyebrow: "§ 01 · About",
-    title: "About Bard Santner",
+    eyebrow: "§ Chapter I · Provenance",
+    title: "Provenance",
     description:
       "A modern African financial platform. Banking, markets, advisory. Anchored in Harare; built to international standards.",
     featured: {
-      eyebrow: "Manifesto",
+      eyebrow: "The Manifesto",
       title: "What we measure ourselves against",
-      body: "A bank is two things at once — a regulated institution AND a relationship held by a name between two people.",
+      body: "A bank is two things at once — a regulated, capital-bearing institution AND a relationship held by a name between two people.",
       cta: { label: "Read the manifesto", to: "/about" },
       image: HERO.about,
     },
     columns: [
       {
-        heading: "The institution",
+        heading: "The Mark",
         items: [
-          { label: "About", to: "/about" },
-          { label: "The Group", to: "/group" },
-          { label: "Leadership", to: "/leadership" },
-          { label: "Locations", to: "/locations" },
+          { label: "Provenance",     to: "/about" },
+          { label: "The House",      to: "/group" },
+          { label: "The Names",      to: "/leadership" },
+          { label: "The Places",     to: "/locations" },
         ],
       },
       {
         heading: "Reach",
         items: [
-          { label: "Contact us", to: "/contact" },
-          { label: "Online Banking", to: "/online-banking" },
+          { label: "The Door (contact)",  to: "/contact" },
+          { label: "Through the Wire",    to: "/online-banking" },
         ],
       },
       {
-        heading: "Trust",
+        heading: "The Warrant",
         items: [
-          { label: "Security", to: "/security" },
-          { label: "Regulatory", to: "/regulatory" },
-          { label: "Privacy", to: "/privacy" },
+          { label: "Security",      to: "/security" },
+          { label: "Regulatory",    to: "/regulatory" },
+          { label: "Privacy",       to: "/privacy" },
           { label: "Accessibility", to: "/accessibility" },
         ],
       },
     ],
     insight: {
-      eyebrow: "Reading",
+      eyebrow: "From the Almanac",
       title: "The bank as a publishing institution",
       to: "/insights/the-bank-as-a-publishing-institution",
     },
   },
 };
 
+// V2 — drawer secondary section, editorial labels
 const DRAWER_SECONDARY = [
-  { label: "Online Banking", to: "/online-banking" },
-  { label: "Locations", to: "/locations" },
-  { label: "Contact us", to: "/contact" },
-  { label: "Leadership", to: "/leadership" },
+  { label: "Through the Wire (Online Banking)", to: "/online-banking" },
+  { label: "The Places (Locations)",            to: "/locations" },
+  { label: "The Door (Contact)",                to: "/contact" },
+  { label: "The Names (Leadership)",            to: "/leadership" },
 ];
 
 export default function MegaNav() {
@@ -390,15 +398,15 @@ export default function MegaNav() {
                   </NavLink>
                 );
               })}
-              {/* Right meta — sovereign mini-row */}
+              {/* Right meta — sovereign mini-row, editorial voice */}
               <div className="ml-auto hidden md:flex items-center gap-6 text-[11.5px] tracking-[0.04em] text-white/65 pr-1">
                 <span className="font-mono-data text-[10.5px] tracking-[0.18em] uppercase text-orange-400/80">
-                  EST · 2025 · Harare
+                  Anno · MMXXV · Harare
                 </span>
                 <span className="text-white/20">|</span>
-                <Link to="/locations" className="hover:text-white">Locations</Link>
-                <Link to="/contact" className="hover:text-white">Contact</Link>
-                <Link to="/group" className="hover:text-white">Group</Link>
+                <Link to="/locations" className="hover:text-white">The Places</Link>
+                <Link to="/contact" className="hover:text-white">The Door</Link>
+                <Link to="/group" className="hover:text-white">The House</Link>
               </div>
             </div>
             <div className="md:hidden pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-navy-700 to-transparent" />
@@ -477,13 +485,13 @@ export default function MegaNav() {
               {/* Sovereign login pill — dark navy with gold lock circle */}
               <Link
                 to="/login"
-                aria-label="Log in to Online Banking"
+                aria-label="Enter the Lobby — Bard Santner Online Banking"
                 className="group hidden md:inline-flex items-center gap-2.5 h-11 pl-1.5 pr-5 rounded-full bg-navy-700 hover:bg-navy-800 border border-navy-800 transition-all duration-300 shadow-[0_1px_2px_rgba(12,10,20,0.04)] hover:shadow-[0_6px_18px_rgba(12,10,20,0.20)] hover:-translate-y-[1px]"
               >
                 <span className="w-8 h-8 rounded-full bg-gold-400 group-hover:bg-orange-500 flex items-center justify-center transition-colors duration-300">
                   <LockIcon size={13} weight="bold" className="text-navy-800" />
                 </span>
-                <span className="text-[14px] font-medium text-white">Log in</span>
+                <span className="text-[14px] font-medium text-white">Enter the Lobby</span>
               </Link>
 
               <button
@@ -558,7 +566,7 @@ export default function MegaNav() {
                 <ArrowRightIcon size={12} weight="bold" className="text-bone-400" />
               </button>
 
-              <p className="eyebrow mb-4">Choose your context</p>
+              <p className="eyebrow mb-4">Choose your station</p>
               <div className="grid grid-cols-2 gap-2.5 mb-8">
                 {AUDIENCES.map((a) => (
                   <Link
@@ -577,7 +585,7 @@ export default function MegaNav() {
                 ))}
               </div>
 
-              <p className="eyebrow mb-4">The bank</p>
+              <p className="eyebrow mb-4">The Chapters</p>
               <nav className="flex flex-col mb-8 border-y border-bone-200">
                 {PRIMARY_NAV.map((l) => (
                   <Link
@@ -592,7 +600,7 @@ export default function MegaNav() {
                 ))}
               </nav>
 
-              <p className="eyebrow mb-4">Reach us</p>
+              <p className="eyebrow mb-4">Reach the Institution</p>
               <nav className="flex flex-col gap-3 mb-9">
                 {DRAWER_SECONDARY.map((l) => (
                   <Link
@@ -613,14 +621,14 @@ export default function MegaNav() {
                 onClick={() => setMobileOpen(false)}
                 className="btn btn-navy w-full justify-center"
               >
-                <LockIcon size={14} weight="bold" /> Log in to Online Banking
+                <LockIcon size={14} weight="bold" /> Enter the Lobby
               </Link>
               <Link
                 to="/contact"
                 onClick={() => setMobileOpen(false)}
                 className="btn btn-ghost-light w-full justify-center"
               >
-                Speak to a banker
+                Open a conversation
                 <ArrowRightIcon size={14} weight="bold" />
               </Link>
             </div>

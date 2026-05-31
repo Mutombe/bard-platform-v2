@@ -10,13 +10,22 @@
 // most consequential. International splits Private and Institutional
 // because it intersects both.
 
+// V2 — audience labels reimagined in the "Annual Letter" voice.
+// URLs stay (Personal → /personal etc.) so internal links don't break;
+// only the visible labels change. The voice borrows from heritage
+// private-bank conventions (Pictet, Edmond de Rothschild, Coutts):
+//   Personal      → Household
+//   Business      → Commerce
+//   Private       → By Appointment
+//   International → Diaspora
+//   Institutional → Institutions
 export const AUDIENCES = [
   {
     id: "personal",
-    label: "Personal",
-    label_full: "Personal Banking",
+    label: "Household",
+    label_full: "Household Banking",
     path: "/personal",
-    eyebrow: "For individuals and families",
+    eyebrow: "For households",
     headline_promise: "Everyday banking, built around your life.",
     hero_image: "/images/audience/personal.jpg",
     summary:
@@ -24,41 +33,41 @@ export const AUDIENCES = [
   },
   {
     id: "business",
-    label: "Business",
-    label_full: "Business Banking",
+    label: "Commerce",
+    label_full: "Banking for Commerce",
     path: "/business",
-    eyebrow: "For founders, SMEs and growing companies",
+    eyebrow: "For founders, ateliers and growing houses of trade",
     headline_promise: "Banking that works as hard as your business.",
     hero_image: "/images/audience/business.jpg",
     summary:
-      "Operating accounts, working-capital facilities, trade rails and the merchant tools the growing African enterprise actually needs.",
+      "Operating accounts, working capital, trade rails and the merchant tools the growing African enterprise actually needs.",
   },
   {
     id: "private",
-    label: "Private Banking",
-    label_full: "Private Banking & Wealth",
+    label: "By Appointment",
+    label_full: "Private Counsel — By Appointment",
     path: "/private-banking",
-    eyebrow: "For established wealth",
+    eyebrow: "For households of established consequence",
     headline_promise: "Relationship-led banking. For lives with weight.",
     hero_image: "/images/audience/private.jpg",
     summary:
-      "Discretionary wealth, advisory, structured credit, succession and the kind of patient counsel that survives more than one market cycle.",
+      "Discretionary mandates, advisory portfolios, structured credit, succession — the kind of patient counsel that survives more than one market cycle.",
   },
   {
     id: "international",
-    label: "International",
-    label_full: "International & Diaspora",
+    label: "Diaspora",
+    label_full: "Diaspora & The Corridor",
     path: "/international",
-    eyebrow: "For the African diaspora and global investors",
+    eyebrow: "For the African diaspora and the corridors that serve it",
     headline_promise: "An African platform, with international reach.",
     hero_image: "/images/audience/international.jpg",
     summary:
-      "Cross-border accounts, FX, trade finance, custody and the rails by which African capital meets the world without leaving its house.",
+      "Cross-border accounts, FX, trade finance, custody, and the rails by which African capital meets the world without leaving its house.",
   },
   {
     id: "institutional",
-    label: "Institutional",
-    label_full: "Corporate & Institutional",
+    label: "Institutions",
+    label_full: "For Institutions",
     path: "/institutional",
     eyebrow: "For corporates, government and large institutions",
     headline_promise: "Treasury, capital markets, advisory. At institutional scale.",

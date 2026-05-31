@@ -27,36 +27,37 @@ import BrandCartouche from "./artifacts/BrandCartouche.jsx";
  *     scale; copy slides up from y=20 with delay
  */
 
+// V2 — three openings of the Annual Letter
 const SLIDES = [
   {
     id: "institution",
-    eyebrow: "§ 01 · Bard Santner Markets Inc",
+    eyebrow: "§ Frontispiece · Bard Santner Markets Inc",
     headline: "Built for the African enterprise.",
-    body: "A modern African financial platform. Banking, wealth, markets and advisory, built to international standards.",
+    body: "A modern African financial platform. The Bank, the Counsel, the Desk and the Almanac — built to international standards.",
     image: HERO.home,
     overlayTint: "navy",
-    primaryCTA: { to: "/personal", label: "Open an account" },
-    secondaryCTA: { to: "/group", label: "Meet the Group" },
+    primaryCTA: { to: "/personal", label: "Open a Current" },
+    secondaryCTA: { to: "/group", label: "Enter the House" },
   },
   {
     id: "online-banking",
-    eyebrow: "§ Online Banking",
+    eyebrow: "§ Through the Wire",
     headline: "Banking that travels with you.",
     body: "Send, receive, save and manage from any device. Same bank, same banker — without the queue.",
     image: HERO.onlineBanking,
     overlayTint: "ink",
-    primaryCTA: { to: "/login", label: "Log in to Online Banking" },
-    secondaryCTA: { to: "/app", label: "Preview the app" },
+    primaryCTA: { to: "/login", label: "Enter the Lobby" },
+    secondaryCTA: { to: "/app", label: "Glimpse the app" },
   },
   {
     id: "wealth",
-    eyebrow: "§ Bard Santner Wealth",
+    eyebrow: "§ The Counsel · Bard Santner Wealth",
     headline: "Patient capital. Patient counsel.",
     body: "Discretionary mandates, advisory portfolios and the long counsel of an international house — anchored in Africa.",
     image: MARQUEE.wealth,
     overlayTint: "orange",
-    primaryCTA: { to: "/wealth", label: "Explore Bard Santner Wealth" },
-    secondaryCTA: { to: "/contact?audience=private", label: "Speak to a wealth banker" },
+    primaryCTA: { to: "/wealth", label: "Open a Mandate" },
+    secondaryCTA: { to: "/contact?audience=private", label: "Open a private conversation" },
   },
 ];
 

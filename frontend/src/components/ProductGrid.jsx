@@ -22,7 +22,7 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
           </div>
           {showAll && (
             <Link to="/banking" className="hover-line text-[14px] font-medium text-orange-600 inline-flex">
-              View all products →
+              All instruments on the shelf →
             </Link>
           )}
         </div>
@@ -68,14 +68,14 @@ export default function ProductGrid({ heading, eyebrow, products = [], showAll =
                     to={`/products/${p.slug}`}
                     className="inline-flex items-center gap-2 text-[13.5px] md:text-[14px] font-medium text-navy-600 hover:text-orange-600 transition-colors"
                   >
-                    Explore {p.name}
+                    On {p.name}
                     <ArrowRightIcon size={13} weight="bold" />
                   </Link>
                   {/* Apply-online affordance — a single quiet tag. The
                       audience+features metadata was rejected; this one
                       tag carries the action that actually matters. */}
                   <span className="text-[10.5px] tracking-[0.16em] uppercase font-medium text-orange-600">
-                    Apply online
+                    Through the Wire
                   </span>
                 </div>
               </div>

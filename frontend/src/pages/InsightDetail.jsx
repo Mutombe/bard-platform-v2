@@ -125,7 +125,7 @@ export default function InsightDetail() {
             </p>
             <div className="pt-5 md:pt-6">
               <Link to="/contact" className="btn btn-navy w-full sm:w-auto justify-center">
-                Speak to a banker about this
+                Open a conversation about this
               </Link>
             </div>
           </div>
