@@ -1,92 +1,78 @@
 @import "tailwindcss";
 
 /* ════════════════════════════════════════════════════════════════════
-   BARD SANTNER · v2 · "The Annual Letter"
+   BARD SANTNER · v2 · INSTITUTIONAL RESTRAINT
 
-   This is a from-scratch design system. It deliberately shares NOTHING
-   visual with v1 — different palette philosophy, different type stack,
-   different layout grammar, different colour ratios.
+   References: J.P. Morgan Private Bank, Goldman Sachs, BlackRock,
+   Morgan Stanley. The site communicates ONE thing visually:
+   "we manage millions of dollars responsibly." Not flashy, not
+   startup-like, not magazine-flamboyant.
 
-   v1 read like an institutional retail bank (Lloyds / AfrAsia tier).
-   v2 reads like a private-banking annual publication (Edmond de
-   Rothschild / Pictet tier) — a printed letter, not a marketing site.
+   Fonts kept from the previous attempt: Bodoni Moda + Source Serif 4 +
+   Inter Tight + JetBrains Mono. Cormorant retained only for occasional
+   italic moments (sparingly).
 
-   GOVERNING PRINCIPLES
-   1. Body type is a SERIF, not a sans. Source Serif 4 carries reading
-      copy. The reader is here to read, not scan.
-   2. Display is a Didone (Bodoni Moda). High vertical contrast,
-      sharp serifs, magazine-cover authority. Not friendly.
-   3. The canvas is CREAM (parchment), not white. Aged paper.
-   4. The primary brand colour is OXBLOOD (cabernet), not navy or
-      orange. The brand orange becomes the WAX-SEAL accent — a single
-      mark per page, never a flood fill.
-   5. Brass / aged gold is the secondary accent for marquees.
-   6. Layouts are asymmetric — 5/7, 3/9, 7/5. Not 6/6 card grids.
-   7. Italic captions, page numerals in margins, drop caps on long
-      paragraphs. Manuscript signatures.
+   DESIGN PRINCIPLES
+   1. White as the dominant canvas. Off-white for layered surfaces.
+   2. Deep navy as the institutional voice. Used heavily on dark
+      sections, footer, primary CTA fills.
+   3. Brand orange RESERVED for restrained accent moments — a single
+      "Apply" CTA, a thin top rule. Not for flooding.
+   4. Sharp corners — 0 to 2 px radius. No 24 px rounded bentos.
+   5. Hairline (1 px) borders throughout. Section dividers are
+      hairlines, not bold rules.
+   6. Type drives hierarchy — Bodoni Moda for display (at restrained
+      sizes, NOT cover-magazine size), Source Serif 4 for body.
+   7. Photography: subtle modern treatment, near-natural, no sepia.
    ═══════════════════════════════════════════════════════════════════ */
 
 @theme {
-  /* ═════ PALETTE ═════
-     The institution dressed for the Annual Letter.
-     Reds (oxblood), browns (vellum), brass (gold). Brand orange
-     reserved for one mark per page; navy archived. */
+  /* ── BRAND PRIMARIES ─────────────────────────────────────────── */
+  --color-navy: #1f2a44;          /* heavier, JPM-style navy */
+  --color-navy-50:  #e7eaf1;
+  --color-navy-100: #c4ccdc;
+  --color-navy-200: #939fb8;
+  --color-navy-300: #647394;
+  --color-navy-400: #3d4d72;
+  --color-navy-500: #2a3656;
+  --color-navy-600: #1f2a44;     /* core */
+  --color-navy-700: #161e33;
+  --color-navy-800: #0e1422;
+  --color-navy-900: #070a13;
+  --color-navy-950: #03050a;
 
-  /* CABERNET / OXBLOOD — the new brand primary */
-  --color-cabernet-50:  #f4ebea;
-  --color-cabernet-100: #d9bdb9;
-  --color-cabernet-200: #b88179;
-  --color-cabernet-300: #8e4c43;
-  --color-cabernet-400: #6a2820;
-  --color-cabernet-500: #4d1812;   /* core */
-  --color-cabernet-600: #3b0e0a;
-  --color-cabernet-700: #2a0805;
-  --color-cabernet-800: #1a0403;
-  --color-cabernet-900: #0e0201;
+  --color-orange: #ee7d36;
+  --color-orange-50:  #fff5ec;
+  --color-orange-100: #fde2cc;
+  --color-orange-200: #fbc695;
+  --color-orange-300: #f7a35d;
+  --color-orange-400: #f28a3e;
+  --color-orange-500: #ee7d36;
+  --color-orange-600: #d96820;
+  --color-orange-700: #b35419;
+  --color-orange-800: #8a3f12;
+  --color-orange-900: #5e2b0c;
 
-  /* PARCHMENT — the cream canvas */
-  --color-parchment-50:  #faf3df;
-  --color-parchment-100: #f3e8c6;
-  --color-parchment-200: #ead7a2;
-  --color-parchment-300: #dec47d;
-  --color-parchment-500: #c9a44a;
-  --color-parchment-700: #836422;
+  /* ── NEUTRALS — clean, modern, no aging ─────────────────────── */
+  --color-ink:    #0a0a0c;       /* near-black for headlines */
+  --color-graphite: #1a1a1c;
+  --color-mute:   #2a2a2d;       /* primary body text */
+  --color-dim:    #5b5b5f;       /* secondary text */
+  --color-faint:  #8e8e92;       /* tertiary / captions */
+  --color-line:   #e0e0dd;       /* hairline borders */
+  --color-line-soft: #ecebe7;
+  --color-cream:  #f6f4ef;       /* off-white surfaces */
+  --color-pearl:  #faf9f6;       /* card surfaces */
 
-  --color-canvas:    #f1e8d2;   /* the page colour — aged cream */
-  --color-canvas-2:  #e8dec0;   /* deeper aged cream for cartouches */
-  --color-vellum:    #ddd2ae;   /* darkest aged for plate backgrounds */
-  --color-bone-warm: #c9bd97;   /* hairline rules + low-emphasis text */
+  /* ── INSTITUTIONAL ACCENTS — used sparingly ─────────────────── */
+  --color-gold:    #c9a04d;       /* discreet gold for marquees */
+  --color-emerald: #1f6f4d;       /* "in good standing" */
+  --color-vermilion:#a8341d;      /* serious red for warnings */
+  --color-cobalt:  #2750e6;       /* data visualisation accent */
 
-  /* BRASS / AGED GOLD — secondary accent, marquees */
-  --color-brass-100: #efe1b8;
-  --color-brass-200: #d8c382;
-  --color-brass-400: #b59052;   /* core */
-  --color-brass-500: #927244;
-  --color-brass-700: #4a3a22;
-
-  /* PRINT-INK BLACKS */
-  --color-print:    #0e0a08;   /* near-black with warmth, NOT pure */
-  --color-graphite: #2a1f1a;   /* second-darkest, for body text */
-  --color-walnut:   #4a3a2e;   /* mid-dark — captions, marginalia */
-  --color-sepia:    #6e5a48;   /* tertiary — small italic gestures */
-
-  /* WAX-SEAL ORANGE — the single mark per page. Brand-canonical
-     orange preserved here but used VERY sparingly (the wax seal,
-     a single CTA hover, a manuscript inkmark). It does NOT
-     flood-fill anywhere. */
-  --color-seal:     #ee7d36;
-  --color-seal-deep:#b35419;
-
-  /* DEEP NAVY archived — kept for the Online-Banking app shell only,
-     no marketing surface uses it any more. */
-  --color-archive-navy: #312f4d;
-
-  /* TYPE STACK
-     Bodoni Moda for display. Source Serif 4 for body. Inter Tight
-     for minimal-sans utility (nav, captions). Cormorant for
-     italic flourish. JetBrains Mono for ticker / data. */
+  /* ── TYPE STACK ─────────────────────────────────────────────── */
   --font-display: "Bodoni Moda Variable", "Bodoni Moda", "Didot",
-                   "Bodoni 72", "Hoefler Text", "Times New Roman", serif;
+                   "Hoefler Text", "Times New Roman", serif;
   --font-body:    "Source Serif 4 Variable", "Source Serif 4",
                    "Iowan Old Style", "Garamond", "Georgia", serif;
   --font-utility: "Inter Tight Variable", "Inter Tight", "Inter",
@@ -96,299 +82,240 @@
   --font-mono:    "JetBrains Mono", "SF Mono", "Menlo", "Consolas",
                    ui-monospace, monospace;
 
-  /* TYPE SCALE — magazine display sizes are LARGER than v1 because
-     a magazine cover commands more space than a hero card. */
-  --text-cover:    clamp(3.5rem, 11vw, 12rem);    /* magazine cover title */
-  --text-headline: clamp(2.5rem, 7vw, 5.5rem);    /* section opener */
-  --text-dek:      clamp(1.5rem, 3vw, 2.25rem);   /* deck/standfirst */
-  --text-body:     1.0625rem;                      /* 17px reading */
-  --text-body-lg:  1.1875rem;                      /* 19px lead body */
-  --text-caption:  0.8125rem;                      /* 13px italic captions */
-  --text-eyebrow:  0.6875rem;                      /* 11px tracked label */
+  /* ── TYPE SCALE — restrained, not magazine-flamboyant ───────── */
+  --text-hero:     clamp(2.5rem, 5.4vw, 5rem);      /* hero — restrained */
+  --text-headline: clamp(2rem, 4.2vw, 3.75rem);     /* section opener */
+  --text-subhead:  clamp(1.5rem, 2.6vw, 2.25rem);   /* sub-section */
+  --text-dek:      clamp(1.0625rem, 1.7vw, 1.375rem);
+  --text-body:     1.0625rem;     /* 17 px */
+  --text-body-lg:  1.1875rem;     /* 19 px lead */
+  --text-caption:  0.8125rem;     /* 13 px */
+  --text-eyebrow:  0.6875rem;     /* 11 px */
 
-  /* PAGE GEOMETRY — magazine page proportions */
-  --column-pad-x:   clamp(1.5rem, 5vw, 4rem);
-  --spread-gap:     clamp(1.5rem, 4vw, 4rem);
-  --section-pad:    clamp(5rem, 10vw, 10rem);
+  /* ── PAGE GEOMETRY ─────────────────────────────────────────── */
+  --column-pad-x:  clamp(1.25rem, 4vw, 2.5rem);
+  --section-pad:   clamp(4.5rem, 9vw, 9rem);
 
-  /* SHADOWS — paper-on-paper, no glossy lifts */
-  --shadow-page: 0 1px 0 rgba(14,10,8,0.04), 0 12px 32px rgba(14,10,8,0.08);
-  --shadow-deep: 0 2px 0 rgba(14,10,8,0.06), 0 24px 60px rgba(14,10,8,0.18);
+  /* ── SHADOWS — almost none. Institutional restraint. ─────── */
+  --shadow-subtle: 0 1px 2px rgba(10,10,12,0.04);
+  --shadow-card:   0 1px 0 rgba(10,10,12,0.04), 0 8px 24px rgba(10,10,12,0.06);
 }
 
-/* ─── Base layer — the publication's reading defaults ────────────── */
+/* ─── Base layer ────────────────────────────────────────────── */
 @layer base {
   html { scroll-behavior: smooth; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-  /* BODY is Source Serif 4. Reading copy throughout. */
+  /* Body — Source Serif 4 on white. */
   body {
     font-family: var(--font-body);
-    color: var(--color-graphite);
-    background: var(--color-canvas);
+    color: var(--color-mute);
+    background: #ffffff;
     font-feature-settings: "kern","liga","calt","onum","lnum","ss01";
     font-size: var(--text-body);
-    line-height: 1.65;
+    line-height: 1.6;
     margin: 0;
   }
-  /* Headings default to Bodoni Moda display. */
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4 {
     font-family: var(--font-display);
-    color: var(--color-print);
+    color: var(--color-ink);
     font-weight: 500;
     letter-spacing: -0.014em;
     line-height: 1.08;
     margin: 0;
   }
-  h1 { font-weight: 600; letter-spacing: -0.02em; }
-  p  { color: var(--color-graphite); margin: 0; }
+  h1 { font-weight: 600; letter-spacing: -0.018em; }
+  p  { color: var(--color-mute); margin: 0; }
   a  { color: inherit; text-decoration: none; }
-  ::selection { background: var(--color-cabernet-500); color: var(--color-parchment-100); }
-  :focus-visible { outline: 2px solid var(--color-cabernet-500); outline-offset: 3px; border-radius: 2px; }
+  ::selection { background: var(--color-navy-600); color: white; }
+  :focus-visible { outline: 2px solid var(--color-navy-600); outline-offset: 3px; border-radius: 2px; }
   img { display: block; max-width: 100%; height: auto; }
 }
 
-/* ─── Component primitives — magazine page architecture ──────────── */
+/* ─── Component primitives ─────────────────────────────────── */
 @layer components {
-  /* Container — magazine page width with generous margins. */
-  .page  { width: 100%; max-width: 1480px; margin-inline: auto; padding-inline: var(--column-pad-x); }
-  .page-narrow { width: 100%; max-width: 720px; margin-inline: auto; padding-inline: var(--column-pad-x); }
-  .page-wide { width: 100%; max-width: 1680px; margin-inline: auto; padding-inline: var(--column-pad-x); }
 
-  /* ─── TYPE TIERS ──────────────────────────────────────────────── */
+  .container-bank { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--column-pad-x); }
+  .container-wide { width: 100%; max-width: 1640px; margin-inline: auto; padding-inline: var(--column-pad-x); }
+  .container-text { width: 100%; max-width: 760px; margin-inline: auto; padding-inline: var(--column-pad-x); }
 
-  /* Cover title — the front-of-publication. Bodoni Moda at huge
-     scale with ultra-tight tracking. Reads like a magazine cover. */
-  .t-cover {
+  /* ── TYPE TIERS — restrained institutional sizing ────────── */
+
+  .t-hero {
     font-family: var(--font-display);
-    font-size: var(--text-cover);
-    line-height: 0.92;
-    letter-spacing: -0.022em;
-    font-weight: 700;
-    font-variation-settings: "opsz" 96;
+    font-size: var(--text-hero);
+    line-height: 0.98;
+    letter-spacing: -0.020em;
+    font-weight: 600;
+    font-variation-settings: "opsz" 72;
   }
-  /* Section headline — major chapter openers. */
   .t-headline {
     font-family: var(--font-display);
     font-size: var(--text-headline);
-    line-height: 1.0;
+    line-height: 1.02;
     letter-spacing: -0.014em;
     font-weight: 500;
-    font-variation-settings: "opsz" 72;
+    font-variation-settings: "opsz" 56;
   }
-  /* Deck / standfirst — Bodoni Moda lighter weight at dek size. */
-  .t-dek {
+  .t-subhead {
     font-family: var(--font-display);
-    font-size: var(--text-dek);
-    line-height: 1.18;
-    letter-spacing: -0.01em;
-    font-weight: 400;
+    font-size: var(--text-subhead);
+    line-height: 1.12;
+    letter-spacing: -0.010em;
+    font-weight: 500;
     font-variation-settings: "opsz" 28;
-    color: var(--color-walnut);
   }
-  /* Lead body — Source Serif 4 at 19px for the opening paragraph. */
+  .t-dek {
+    font-family: var(--font-body);
+    font-size: var(--text-dek);
+    line-height: 1.42;
+    color: var(--color-dim);
+    font-weight: 400;
+  }
   .t-lead {
     font-family: var(--font-body);
     font-size: var(--text-body-lg);
-    line-height: 1.6;
-    color: var(--color-graphite);
+    line-height: 1.62;
+    color: var(--color-mute);
   }
-  /* Caption — Cormorant italic, used under images / in margins. */
-  .t-caption {
-    font-family: var(--font-italic);
-    font-style: italic;
-    font-size: var(--text-caption);
-    line-height: 1.4;
-    color: var(--color-walnut);
-    letter-spacing: 0.005em;
-  }
-  /* Eyebrow — Inter Tight tracked uppercase. The only sans on a
-     reading surface. Used as section labels and TOC numerals. */
   .t-eyebrow {
     font-family: var(--font-utility);
     font-size: var(--text-eyebrow);
     line-height: 1;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-sepia);
+    color: var(--color-dim);
     font-weight: 600;
   }
-  /* Page number — JetBrains Mono in margins, like a printed folio. */
-  .t-folio {
+  .t-caption {
+    font-family: var(--font-utility);
+    font-size: var(--text-caption);
+    line-height: 1.5;
+    color: var(--color-dim);
+  }
+  .t-mono {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
-    color: var(--color-walnut);
+    color: var(--color-dim);
     font-variant-numeric: tabular-nums;
   }
-  /* Drop-cap — Bodoni initial letter, floats left of paragraph. */
-  .t-dropcap::first-letter {
-    font-family: var(--font-display);
-    font-size: 5.2em;
-    line-height: 0.82;
-    float: left;
-    margin: 0.08em 0.14em 0 0;
-    color: var(--color-cabernet-500);
+  .t-accent-italic {
+    font-family: var(--font-italic);
+    font-style: italic;
+  }
+
+  /* ── BUTTONS — sharp, restrained, no rounded fashion pills ─ */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    padding: 0.875rem 1.5rem;
+    font-family: var(--font-utility);
+    font-size: 0.875rem;
     font-weight: 600;
-    font-variation-settings: "opsz" 96;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    border-radius: 2px;
+    transition: all 220ms ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-navy {
+    background: var(--color-navy-600);
+    color: white;
+    border-color: var(--color-navy-600);
+  }
+  .btn-navy:hover { background: var(--color-navy-800); border-color: var(--color-navy-800); }
+
+  .btn-orange {
+    background: var(--color-orange-500);
+    color: white;
+    border-color: var(--color-orange-500);
+  }
+  .btn-orange:hover { background: var(--color-orange-600); border-color: var(--color-orange-600); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
+  }
+  .btn-outline:hover { background: var(--color-ink); color: white; }
+
+  .btn-outline-light {
+    background: transparent;
+    color: white;
+    border-color: rgba(255,255,255,0.5);
+  }
+  .btn-outline-light:hover { background: white; color: var(--color-navy-600); border-color: white; }
+
+  .btn-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-utility);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-navy-600);
+    transition: color 200ms ease;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+  }
+  .btn-text:hover { color: var(--color-orange-600); }
+  .btn-text .arrow { transition: transform 200ms ease; }
+  .btn-text:hover .arrow { transform: translateX(3px); }
+
+  /* ── SURFACES ────────────────────────────────────────────── */
+
+  .surface-white { background: #ffffff; }
+  .surface-cream { background: var(--color-cream); }
+  .surface-pearl { background: var(--color-pearl); }
+  .surface-navy  { background: var(--color-navy-600); color: white; }
+  .surface-navy-deep { background: var(--color-navy-800); color: white; }
+  .surface-ink   { background: var(--color-ink); color: white; }
+
+  /* ── CARDS — sharp corners, hairline border, NO rounded bento ─ */
+  .card-flat {
+    background: white;
+    border: 1px solid var(--color-line);
+    transition: border-color 220ms ease, box-shadow 220ms ease;
+  }
+  .card-flat:hover {
+    border-color: var(--color-navy-300);
+    box-shadow: var(--shadow-card);
   }
 
-  /* ─── HAIRLINES & ORNAMENTS ───────────────────────────────────── */
+  /* ── HAIRLINES ───────────────────────────────────────────── */
+  .hairline       { height: 1px; background: var(--color-line); border: 0; }
+  .hairline-soft  { height: 1px; background: var(--color-line-soft); border: 0; }
+  .hairline-dark  { height: 1px; background: rgba(255,255,255,0.12); border: 0; }
+  .vline          { width: 1px; background: var(--color-line); border: 0; align-self: stretch; }
 
-  .hairline-warm    { height: 1px; background: var(--color-bone-warm); border: 0; opacity: 0.7; }
-  .hairline-cabernet{ height: 1px; background: var(--color-cabernet-500); border: 0; opacity: 0.55; }
-  .hairline-print   { height: 1px; background: var(--color-print); border: 0; opacity: 0.20; }
-
-  /* Roman numeral chapter mark — used in section openers / TOC */
-  .roman-numeral {
-    font-family: var(--font-display);
-    font-weight: 400;
-    font-variation-settings: "opsz" 144;
-    line-height: 0.85;
-    letter-spacing: 0.02em;
-  }
-
-  /* ─── INTERACTIVE SURFACES ────────────────────────────────────── */
-
-  /* Pencil link — magazine-style underline that grows on hover.
-     Default link style for body copy. */
-  .pencil-link {
-    color: var(--color-cabernet-500);
+  /* ── LINKS — institutional pencil underline ──────────────── */
+  .link-serif {
+    color: var(--color-navy-600);
     background-image: linear-gradient(currentColor, currentColor);
     background-position: 0 100%;
     background-repeat: no-repeat;
     background-size: 100% 1px;
     transition: background-size 220ms ease, color 220ms ease;
   }
-  .pencil-link:hover {
+  .link-serif:hover {
     background-size: 100% 2px;
-    color: var(--color-cabernet-700);
+    color: var(--color-orange-600);
   }
 
-  /* Buttons — magazine paradigm: text + arrow + hairline on hover.
-     The institution's actions don't shout. */
-  .btn-letterpress {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.875rem;
-    padding: 0.875rem 1.5rem;
-    font-family: var(--font-utility);
-    font-size: 0.8125rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--color-print);
-    background: transparent;
-    border: 1px solid var(--color-print);
-    transition: all 220ms ease;
-    cursor: pointer;
-  }
-  .btn-letterpress:hover {
-    background: var(--color-print);
-    color: var(--color-parchment-100);
-  }
-  .btn-letterpress-cabernet {
-    color: var(--color-canvas);
-    background: var(--color-cabernet-500);
-    border-color: var(--color-cabernet-500);
-  }
-  .btn-letterpress-cabernet:hover {
-    background: var(--color-cabernet-700);
-    border-color: var(--color-cabernet-700);
-  }
-  .btn-letterpress-light {
-    color: var(--color-canvas);
-    border-color: rgba(241,232,210,0.5);
-  }
-  .btn-letterpress-light:hover {
-    background: var(--color-canvas);
-    color: var(--color-print);
-  }
-
-  /* ─── BACKGROUND TEXTURES ─────────────────────────────────────── */
-
-  /* Aged paper — subtle warm vignette + paper-grain noise via CSS
-     gradients only (no external assets). Used on cover/colophon. */
-  .surface-paper {
-    background-color: var(--color-canvas);
-    background-image:
-      radial-gradient(ellipse at top left, rgba(74,58,46,0.05), transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(74,58,46,0.06), transparent 55%);
-  }
-  .surface-paper-deep {
-    background-color: var(--color-canvas-2);
-    background-image:
-      radial-gradient(ellipse at top left, rgba(74,58,46,0.08), transparent 50%),
-      radial-gradient(ellipse at bottom right, rgba(74,58,46,0.10), transparent 55%);
-  }
-  /* Cabernet plate — deep oxblood spread surface */
-  .surface-cabernet {
-    background-color: var(--color-cabernet-500);
-    color: var(--color-parchment-100);
-    background-image:
-      radial-gradient(ellipse at top, rgba(255,235,200,0.04), transparent 50%);
-  }
-  /* Print plate — near-black for dramatic full-bleed spreads */
-  .surface-print {
-    background-color: var(--color-print);
-    color: var(--color-parchment-100);
-  }
-
-  /* ─── MARGINS & FOLIOS ────────────────────────────────────────── */
-
-  /* Folio — page-number block in margin. Used on cover, spreads. */
-  .folio {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
+  /* ── DATA / TICKER ───────────────────────────────────────── */
+  .data-row {
     font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-walnut);
     font-variant-numeric: tabular-nums;
-  }
-  .folio::before {
-    content: "";
-    display: inline-block;
-    width: 1.5rem;
-    height: 1px;
-    background: currentColor;
-    opacity: 0.4;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
   }
 
-  /* ─── WAX SEAL — the single brand-orange mark per page ───────── */
-  .wax-seal {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    border-radius: 9999px;
-    background: var(--color-seal);
-    color: var(--color-cabernet-900);
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 14px;
-    letter-spacing: 0.04em;
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,0.18),
-      inset 0 0 0 5px var(--color-seal),
-      inset 0 0 0 6px var(--color-cabernet-900),
-      0 4px 14px rgba(238,125,54,0.35);
-    transform: rotate(-5deg);
-    position: relative;
-  }
-  .wax-seal::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 9999px;
-    background: repeating-conic-gradient(rgba(0,0,0,0.06) 0deg 12deg, transparent 12deg 24deg);
-    pointer-events: none;
-  }
-
-  /* ─── SCROLL UTILITIES ────────────────────────────────────────── */
+  /* ── NO-SCROLLBAR utility ─────────────────────────────────── */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }

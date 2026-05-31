@@ -3,42 +3,30 @@ import PageTransition from "../components/PageTransition.jsx";
 import SEO from "../components/SEO.jsx";
 
 /**
- * UnderPress — placeholder chapter page.
+ * UnderPress — placeholder section page (institutional voice).
  *
- * v2 is being typeset chapter by chapter. Every chapter route that
- * does not yet have its own designed spread renders this page —
- * a printed-errata-style notice indicating the chapter is "under
- * press", with a folio number and a return-to-cover.
- *
- * This is deliberately public; it says "we are working on this"
- * with the same typographic seriousness as the rest of the
- * publication.
+ * Replaces the previous "magazine typesetter" voice with a quieter
+ * one suitable for the JPM-tier paradigm. Used for any route whose
+ * bespoke page has not yet been built.
  */
-export default function UnderPress({ folio = "—", chapter = "This chapter" }) {
+export default function UnderPress({ section = "This section" }) {
   const params = useParams();
   return (
     <PageTransition>
-      <SEO title={`${chapter} · Under press`} path={params.slug ? `/${params.slug}` : undefined} noindex />
-      <section className="surface-paper min-h-[80vh] flex items-center">
-        <div className="page-narrow text-center py-20">
-          <p className="t-eyebrow text-cabernet-500 mb-5">
-            ❦ &nbsp; {folio} · Under press
-          </p>
-          <h1 className="t-headline text-print mb-7">
-            {chapter} is being typeset.
+      <SEO title={`${section} · Coming soon`} path={params.slug ? `/${params.slug}` : undefined} noindex />
+      <section className="surface-white min-h-[78vh] flex items-center">
+        <div className="container-text text-center py-24">
+          <p className="t-eyebrow text-orange-600 mb-5">Coming soon</p>
+          <h1 className="t-headline text-ink mb-7 text-balance">
+            {section} is being prepared.
           </h1>
-          <p className="font-italic italic text-[18px] md:text-[20px] text-walnut mb-10 max-w-md mx-auto leading-relaxed">
-            The cover and the first chapters of the Annual Letter have
-            been printed. This page is being composed at the press; it
-            will be inserted into the bound edition shortly.
+          <p className="t-dek text-dim mb-10 max-w-xl mx-auto">
+            This section of bardsantner.com is under construction.
+            The home page is live; we will publish the full page shortly.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-3">
-            <Link to="/" className="btn-letterpress btn-letterpress-cabernet">
-              ↺ &nbsp; Return to the cover
-            </Link>
-            <Link to="/contact" className="btn-letterpress">
-              Open a conversation
-            </Link>
+            <Link to="/" className="btn btn-navy">Return to home</Link>
+            <Link to="/contact" className="btn btn-outline">Speak with a banker</Link>
           </div>
         </div>
       </section>

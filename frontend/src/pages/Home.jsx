@@ -1,133 +1,154 @@
 import PageTransition from "../components/PageTransition.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
 
-import Cover       from "../components/zine/Cover.jsx";
-import Spread      from "../components/zine/Spread.jsx";
-import Letterpress from "../components/zine/Letterpress.jsx";
+import HeroSerious     from "../components/modern/HeroSerious.jsx";
+import SectionHeader   from "../components/modern/SectionHeader.jsx";
+import CapabilitiesGrid from "../components/modern/CapabilitiesGrid.jsx";
+import StatsBlock      from "../components/modern/StatsBlock.jsx";
+import FeatureSpread   from "../components/modern/FeatureSpread.jsx";
+import ResearchGrid    from "../components/modern/ResearchGrid.jsx";
+import ContactBand     from "../components/modern/ContactBand.jsx";
 
 import { HERO, MARQUEE } from "../data/images.js";
+import { INSIGHTS }      from "../data/insights.js";
 
 /**
- * V2 home — the Annual Letter.
+ * V2 home — institutional restraint.
  *
- * Layout discipline:
- *   • Cover (magazine cover with TOC margin, NOT a hero carousel)
- *   • Spreads — asymmetric image-and-text pages, each numbered with
- *     a roman numeral. No card grids anywhere.
- *   • Letterpress — signed letter from the CEO mounted inside the
- *     cabernet plate.
- *   • Colophon — bottom-of-publication credit + imprint + door.
- *     (Footer is global; lives in App.jsx.)
+ * Page rhythm (JPM Private Bank / Goldman / BlackRock canon):
+ *   1. Hero — restrained editorial photo + Bodoni headline + dek + CTAs
+ *   2. By the numbers — 4-up hairline-divided stats strip
+ *   3. What we do — 4 capability cells (sharp corners, hairline borders)
+ *   4. Feature spread — Wealth division
+ *   5. Feature spread — Markets & Treasury
+ *   6. Research & Insights — 3-card editorial row
+ *   7. Connect — dark navy contact band
  *
- * Photography is filtered down to near-monochrome with a slight sepia
- * lift, so the entire publication reads as if printed on aged paper.
+ * No carousel. No bento. No rounded fashion shapes. No flashy
+ * gradients. Everything restrained.
  */
 export default function Home() {
   return (
     <PageTransition>
       <SEO
-        title="No. II — The Annual Letter"
-        description="Bard Santner Markets Inc. A modern African financial institution. Banking, counsel, markets and editorial — anchored in Harare; built to international standards."
+        title="A modern African financial platform"
+        description="Bard Santner Markets Inc. Banking, wealth management, capital markets and editorial — anchored in Harare, built to international standards."
         path="/"
         keywords={[
           "African bank", "Bard Santner", "BSMFB", "private banking Africa",
-          "trade finance Zimbabwe", "diaspora banking", "wealth management Harare",
+          "wealth management Harare", "trade finance Zimbabwe",
         ]}
-        jsonLd={[
-          organizationJsonLd(),
-          websiteJsonLd(),
-          breadcrumbJsonLd([{ name: "Cover", path: "/" }]),
-        ]}
+        jsonLd={[organizationJsonLd(), websiteJsonLd(), breadcrumbJsonLd([{ name: "Home", path: "/" }])]}
       />
 
-      {/* The cover */}
-      <Cover />
+      {/* 1. Hero */}
+      <HeroSerious />
 
-      {/* I. The Bank — paper spread, image left */}
-      <Spread
-        numeral="I."
-        folio="Chap. I · The Bank"
-        eyebrow="The first instrument"
-        headline="Every account on one shelf."
-        dek="For households, for commerce, for the considered, for institutions. The bank is the most ordinary thing the institution does, and the most important."
-        body={[
-          "The flagship deposit-taking institution of the Bard Santner Group is Bard Santner Microfinance Bank, BSMFB. The bank's job is the boring one: hold the deposit as a deposit, extend credit on the conversation, and clear the day on the day. Done well, that is enough for a century.",
-          "We are not building a banking app. We are building a bank, and the app is the way clients reach it. Same banker, same conversation, same standard — without the queue.",
-        ]}
-        image={HERO.banking}
-        caption="At the counter — first light, Beverly Court, Harare."
-        cta={{ label: "Open the chapter", to: "/banking" }}
-        side="left"
-        tone="paper"
-      />
+      {/* 2. By the numbers */}
+      <section className="surface-white">
+        <div className="container-wide py-20 md:py-24">
+          <SectionHeader
+            eyebrow="By the Numbers"
+            headline="The institution as a measurable thing."
+            dek="A young institution measured by what it intends to be — directional, not audited."
+          />
+          <StatsBlock
+            stats={[
+              { value: "5",      label: "Institutions in the firm", body: "BSMFB, Markets Inc, Bard Loans, Golf, Bardiq Journal." },
+              { value: "40", unit: "+", label: "Correspondent banking jurisdictions", body: "Cross-border rails through the African corridor." },
+              { value: "3",      label: "Continents reached", body: "Harare flagship, Johannesburg, London diaspora desk." },
+              { value: "MMXXV",  label: "Year founded", body: "Anno MMXXV · CIPZ entity 42656A0252025." },
+            ]}
+          />
+        </div>
+      </section>
 
-      {/* II. The Counsel — cabernet plate, image right */}
-      <Spread
-        numeral="II."
-        folio="Chap. II · The Counsel"
-        eyebrow="By appointment"
-        headline="Patient capital. Patient counsel."
-        dek="Discretionary mandates, advisory portfolios and the long counsel of an international house — anchored in Africa."
+      {/* 3. What we do — capability grid */}
+      <section className="surface-cream">
+        <div className="container-wide py-20 md:py-28">
+          <SectionHeader
+            eyebrow="What We Do"
+            headline="A single institution, four disciplines."
+            dek="Banking, wealth, capital markets and editorial — under one governance, with the same standard."
+          />
+          <CapabilitiesGrid
+            items={[
+              {
+                label: "Banking",
+                title: "Day-to-day banking, done seriously.",
+                body: "Current accounts, savings, mortgages and the everyday infrastructure for households and growing businesses.",
+                cta: { label: "Banking services", to: "/banking" },
+              },
+              {
+                label: "Wealth",
+                title: "Private counsel, written down.",
+                body: "Discretionary mandates, advisory portfolios and structured credit for households of consequence.",
+                cta: { label: "Wealth management", to: "/wealth" },
+              },
+              {
+                label: "Markets",
+                title: "The desk that runs the book.",
+                body: "Treasury, FX, debt capital markets origination and trade finance for institutional treasurers.",
+                cta: { label: "Markets & Treasury", to: "/markets" },
+              },
+              {
+                label: "Editorial",
+                title: "An institution that publishes.",
+                body: "Bardiq Journal — quarterly print, weekly online. Research from the people who run the desks.",
+                cta: { label: "Research & Insights", to: "/insights" },
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* 4. Wealth feature spread */}
+      <FeatureSpread
+        eyebrow="Private Wealth"
+        title="Patient capital. Patient counsel."
+        dek="Bard Santner Wealth serves households of established consequence — discretionary mandates, advisory portfolios and the long counsel of an international house, anchored in Africa."
         body={[
-          "Bard Santner Wealth is the division of the institution that meets clients at a longer horizon. Discretionary mandates, advisory portfolios, structured credit and the second conversation that every wealth relationship eventually arrives at.",
-          "The relationship is with a named banker; the mandate is written down; the conversation continues until the principal asks it to end.",
+          "Our wealth practice is named. The mandate is written down. The relationship is with a senior banker who carries it across decades — and the conversation continues until the principal asks it to end.",
         ]}
         image={MARQUEE.wealth}
-        caption="The atrium — by appointment, on the upper floor."
-        cta={{ label: "Open the counsel", to: "/wealth" }}
-        side="right"
-        tone="cabernet"
+        caption="Above — the wealth division, by appointment."
+        cta={{ label: "Explore Wealth", to: "/wealth" }}
+        side="left"
+        tone="light"
       />
 
-      {/* III. The Desk — paper, image left */}
-      <Spread
-        numeral="III."
-        folio="Chap. III · The Desk"
-        eyebrow="The book is the book"
-        headline="Treasury. Trade. Markets."
-        dek="The capital-markets desk: liquidity, FX, debt-capital-markets origination and trade finance — the desk-grade infrastructure on which a serious treasurer runs an institution."
+      <div className="container-wide"><hr className="hairline" /></div>
+
+      {/* 5. Markets feature spread */}
+      <FeatureSpread
+        eyebrow="Markets & Treasury"
+        title="The desk-grade infrastructure institutional treasurers expect."
+        dek="Capital markets origination, treasury services, foreign exchange and trade finance — from the parent institution that holds the long correspondent-banking memory."
         body={[
-          "Markets is a memory business. The desk's work is keeping its relationships with regulators, correspondents and counterparties intact across the years. Bonds are originated, paper is syndicated, the day is reconciled — and tomorrow the desk opens again at eight.",
-          "We do not run the desk to look busy. We run it to be reachable.",
+          "Markets is a memory business. The desk's relationships with regulators, correspondents and counterparties are the asset. Bonds are originated, paper is syndicated, the day is reconciled. Tomorrow, the desk opens again.",
         ]}
         image={HERO.markets}
-        caption="End-of-day. The book is reconciled."
-        cta={{ label: "Approach the desk", to: "/markets" }}
-        side="left"
-        tone="paper"
-      />
-
-      {/* IV. The Almanac — print plate, image right */}
-      <Spread
-        numeral="IV."
-        folio="Chap. IV · The Almanac"
-        eyebrow="From the desk to the reader"
-        headline="A bank that publishes."
-        dek="Editorial commentary by the people who run the desks. Quarterly print, weekly online — Bardiq Journal carries the long form."
-        body={[
-          "An institution that does not publish what it thinks is, in our reading, an institution that does not know what it thinks. Bardiq Journal is the second discipline of this house: short reads online, long reads in print, signed by the people on the desks.",
-          "Nothing we publish would survive a second reading we cannot answer for.",
-        ]}
-        image={HERO.insights}
-        caption="The reading room — Gladstone's Library, by reference."
-        cta={{ label: "Read the almanac", to: "/insights" }}
+        caption="Above — end-of-day on the markets floor."
+        cta={{ label: "Contact the desk", to: "/contact?audience=institutional" }}
         side="right"
-        tone="print"
+        tone="cream"
       />
 
-      {/* V. Letterpress — the CEO's letter */}
-      <Letterpress
-        authorName="Senziwani Sikhosana"
-        authorRole="Chief Executive Officer"
-        dateline="2 May 2026 · Harare"
-        folio="Chap. V · A letter to the reader"
-        salutation="To the reader,"
-        paragraphs={[
-          "A bank is two things at once. A regulated, capital-bearing institution operating under licence. And a relationship — held by a name, between two people, over the longest horizon either of them can plan for. Most African banks have chosen one and ignored the other. We chose both, in the same building, signed by the same person.",
-          "If you are reading this in 2026, you are reading the beginning of a serious bank. If you are reading it in 2096, we hope the institution has earned the time you are giving it.",
-        ]}
-        closing="Yours, in commerce,"
-      />
+      {/* 6. Research & Insights */}
+      <section className="surface-white">
+        <div className="container-wide py-20 md:py-28">
+          <SectionHeader
+            eyebrow="Research & Insights"
+            headline="From the desks that wrote them."
+            dek="Editorial commentary by the people who run our books. Bardiq Journal carries the long form."
+            viewAll={{ label: "View all research", to: "/insights" }}
+          />
+          <ResearchGrid items={INSIGHTS.slice(0, 3)} />
+        </div>
+      </section>
+
+      {/* 7. Contact band */}
+      <ContactBand />
     </PageTransition>
   );
 }
