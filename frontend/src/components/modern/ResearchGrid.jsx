@@ -27,7 +27,7 @@ export default function ResearchGrid({ items = [], tone = "light" }) {
           transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
         >
           <Link to={`/insights/${it.slug}`} className="block group">
-            <div className="aspect-[16/10] overflow-hidden border-b border-line">
+            <div className="aspect-[4/3] sm:aspect-[16/10] overflow-hidden border-b border-line">
               <div
                 className="w-full h-full bg-cover bg-center transition-[filter,transform] duration-700 group-hover:scale-[1.03]"
                 style={{

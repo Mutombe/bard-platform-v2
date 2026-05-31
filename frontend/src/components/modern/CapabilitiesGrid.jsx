@@ -29,7 +29,7 @@ export default function CapabilitiesGrid({ items = [], tone = "light" }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
-          className={`relative p-7 md:p-9 ${tone === "dark" ? "bg-navy-600" : "bg-white"} group`}
+          className={`relative p-7 md:p-9 lg:p-12 ${tone === "dark" ? "bg-navy-600" : "bg-white"} group`}
         >
           {/* Top hairline that warms to orange on hover */}
           <span className={`absolute top-0 left-0 right-0 h-px ${palette.rule} group-hover:bg-orange-500 transition-colors`} />

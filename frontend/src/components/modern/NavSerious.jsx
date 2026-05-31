@@ -266,11 +266,14 @@ export default function NavSerious() {
 
   return (
     <>
-      {/* ── Top audience strip — dark navy, JPM canon ────────── */}
-      <div className="surface-navy-deep relative z-50">
-        <div className="container-wide">
-          <div className="flex items-center justify-between h-10 text-[12px]">
-            <div className="flex items-center gap-7 overflow-x-auto no-scrollbar">
+      {/* ── Top audience strip — dark navy, JPM canon ──────────
+          Internal horizontal scroll if labels exceed viewport width.
+          Page body has overflow-x: hidden so nothing leaks into the
+          page-level scroll. */}
+      <div className="surface-navy-deep relative z-50 w-full">
+        <div className="container-wide w-full">
+          <div className="relative w-full overflow-x-auto no-scrollbar">
+            <div className="flex items-center gap-7 h-10 text-[12px] whitespace-nowrap">
               {AUDIENCE_STRIP.map((a) => {
                 const active = loc.pathname.startsWith(a.to);
                 return (
@@ -286,13 +289,6 @@ export default function NavSerious() {
                   </NavLink>
                 );
               })}
-            </div>
-            <div className="hidden md:flex items-center gap-6 text-white/60 text-[11.5px]">
-              <span className="font-mono text-[10.5px] tracking-[0.16em] uppercase">
-                Member · CIPZ 42656A0252025
-              </span>
-              <Link to="/contact" className="hover:text-white">Contact</Link>
-              <Link to="/locations" className="hover:text-white">Locations</Link>
             </div>
           </div>
         </div>

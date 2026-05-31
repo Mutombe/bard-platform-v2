@@ -92,9 +92,21 @@
   --text-caption:  0.8125rem;     /* 13 px */
   --text-eyebrow:  0.6875rem;     /* 11 px */
 
-  /* ── PAGE GEOMETRY ─────────────────────────────────────────── */
-  --column-pad-x:  clamp(1.25rem, 4vw, 2.5rem);
-  --section-pad:   clamp(4.5rem, 9vw, 9rem);
+  /* ── PAGE GEOMETRY — lifted floors for confident white space ─
+     Mobile container floor 1.5rem (24px) leaves 327px content width
+     on a 375px viewport — enough room for the 4:3 photo and a
+     2-column footer grid without crowding. Section padding clamps
+     higher so even the smallest viewports get a confident vertical
+     rhythm. */
+  --column-pad-x:  clamp(1.5rem, 4vw, 3.5rem);
+  --section-pad:   clamp(5rem, 10vw, 11rem);
+
+  /* Nav heights — used by hero calc(100svh - …) so the hero
+     locks to a single viewport without scrolling.
+       audience strip (h-10 = 40)  +  brand row (h-[78]) = 118 desktop
+       audience strip (h-10 = 40)  +  brand row (h-[68]) = 108 mobile */
+  --nav-h-desktop: 118px;
+  --nav-h-mobile:  108px;
 
   /* ── SHADOWS — almost none. Institutional restraint. ─────── */
   --shadow-subtle: 0 1px 2px rgba(10,10,12,0.04);
@@ -103,6 +115,11 @@
 
 /* ─── Base layer ────────────────────────────────────────────── */
 @layer base {
+  /* Global horizontal-overflow guard — prevents any rogue element
+     (long ticker, audience strip, deep grid) from pushing the whole
+     page wider than the viewport, which would manifest as content
+     "stuck to the right" on mobile. */
+  html, body { overflow-x: hidden; }
   html { scroll-behavior: smooth; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
   /* Body — Source Serif 4 on white. */
@@ -318,6 +335,40 @@
   /* ── NO-SCROLLBAR utility ─────────────────────────────────── */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ── STRATEGIC IMAGE BLENDING ─────────────────────────────────
+     Two utilities for fading editorial photographs into the white
+     canvas at their inner edge — JPM Private Bank canonical move,
+     where the image doesn't sit in a hard frame but dissolves into
+     the page as it approaches the text column.
+
+       .blend-fade-left   image fades to transparent on its LEFT edge
+                          (used when text sits on the left side)
+       .blend-fade-right  image fades on its RIGHT edge
+                          (used when text sits on the right side)
+
+     Tailwind-aware mask-image with a 14% fade band — soft enough to
+     feel deliberate, hard enough not to look like a mistake. */
+  .blend-fade-left {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 8%, black 18%);
+            mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 8%, black 18%);
+  }
+  .blend-fade-right {
+    -webkit-mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.4) 8%, black 18%);
+            mask-image: linear-gradient(to left, transparent 0%, rgba(0,0,0,0.4) 8%, black 18%);
+  }
+  /* Bottom-fade variant for hero — photo sits in a column and
+     gently dissolves into the canvas at its lower edge. */
+  .blend-fade-bottom {
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.5) 5%, black 14%);
+            mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.5) 5%, black 14%);
+  }
+
+  /* Editorial photo filter — restrained, modern, no sepia.
+     Used as the default photo treatment site-wide. */
+  .photo-modern  { filter: saturate(0.92) brightness(0.98) contrast(1.05); }
+  .photo-quieter { filter: saturate(0.82) brightness(0.96) contrast(1.04); }
+  .photo-dark    { filter: saturate(0.78) brightness(0.84) contrast(1.06); }
 }
 
 @layer utilities {
