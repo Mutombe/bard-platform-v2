@@ -1,195 +1,133 @@
 import PageTransition from "../components/PageTransition.jsx";
-import HomeHeroCarousel from "../components/HomeHeroCarousel.jsx";
-import QuickActionStrip from "../components/QuickActionStrip.jsx";
-import AudienceTiles from "../components/AudienceTiles.jsx";
-import StatsBand from "../components/StatsBand.jsx";
-import WealthMarquee from "../components/WealthMarquee.jsx";
-import ProductGrid from "../components/ProductGrid.jsx";
-import GroupRibbon from "../components/GroupRibbon.jsx";
-import InsightsRail from "../components/InsightsRail.jsx";
-import AdvisoryBand from "../components/AdvisoryBand.jsx";
-import TrustRibbon from "../components/TrustRibbon.jsx";
 import SEO, { organizationJsonLd, websiteJsonLd, breadcrumbJsonLd } from "../components/SEO.jsx";
 
-import TickerStrip from "../components/artifacts/TickerStrip.jsx";
-import OrnamentDivider from "../components/artifacts/OrnamentDivider.jsx";
-import ChapterMark from "../components/artifacts/ChapterMark.jsx";
-import SignedLetter from "../components/artifacts/SignedLetter.jsx";
-import PullQuote from "../components/artifacts/PullQuote.jsx";
-import VintageMap from "../components/artifacts/VintageMap.jsx";
-import FoundingTimeline from "../components/artifacts/FoundingTimeline.jsx";
+import Cover       from "../components/zine/Cover.jsx";
+import Spread      from "../components/zine/Spread.jsx";
+import Letterpress from "../components/zine/Letterpress.jsx";
 
-import { QUICK_ACTIONS } from "../data/quickActions.js";
-import { PRODUCTS } from "../data/products.js";
-import { INSIGHTS } from "../data/insights.js";
+import { HERO, MARQUEE } from "../data/images.js";
 
 /**
- * V2 home — "red pill" arrangement.
+ * V2 home — the Annual Letter.
  *
- * Editorial chapter sequence rather than a card stack. Each chapter
- * opens with a giant Roman numeral, breathes with manuscript ornament
- * dividers, and lands in a named principal's voice. The Lloyds-card
- * rhythm of v1 is preserved underneath; the v2 layer is the
- * institutional editorial frame around it.
+ * Layout discipline:
+ *   • Cover (magazine cover with TOC margin, NOT a hero carousel)
+ *   • Spreads — asymmetric image-and-text pages, each numbered with
+ *     a roman numeral. No card grids anywhere.
+ *   • Letterpress — signed letter from the CEO mounted inside the
+ *     cabernet plate.
+ *   • Colophon — bottom-of-publication credit + imprint + door.
+ *     (Footer is global; lives in App.jsx.)
  *
- *   § I.    HERO + TICKER         Three-slide carousel, live ticker
- *   § II.   AUDIENCES             Chapter mark + AudienceTiles
- *   § III.  THE NUMBERS           Chapter mark + StatsBand
- *   ❝       PULL-QUOTE — Sikhosana ("A bank is signed by its people")
- *   § IV.   WEALTH                WealthMarquee in heritage gold
- *   § V.    PRODUCTS              ProductGrid
- *   § VI.   THE CORRIDOR          ChapterMark + VintageMap of Africa
- *   § VII.  THE GROUP             GroupRibbon
- *   ❝       PULL-QUOTE — Mthimkhulu (capital markets)
- *   § VIII. EDITORIAL             InsightsRail
- *   § IX.   FOUNDING              FoundingTimeline + SignedLetter
- *                                 from the CEO
- *   § X.    ADVISORY              AdvisoryBand
- *   § XI.   TRUST                 TrustRibbon
+ * Photography is filtered down to near-monochrome with a slight sepia
+ * lift, so the entire publication reads as if printed on aged paper.
  */
 export default function Home() {
-  const featuredProducts = PRODUCTS.filter((p) =>
-    ["everyday-account", "business-account", "wealth-management", "trade-finance"].includes(p.slug)
-  );
-
   return (
     <PageTransition>
       <SEO
-        title="A modern African financial platform"
-        description="Bard Santner Markets Inc. Banking, wealth management, trade finance, treasury and advisory. Anchored in Africa. Built to international standards."
+        title="No. II — The Annual Letter"
+        description="Bard Santner Markets Inc. A modern African financial institution. Banking, counsel, markets and editorial — anchored in Harare; built to international standards."
         path="/"
         keywords={[
-          "African bank", "Bard Santner", "BSMFB", "Bard Santner Microfinance Bank",
-          "private banking Africa", "trade finance Zimbabwe", "diaspora banking",
+          "African bank", "Bard Santner", "BSMFB", "private banking Africa",
+          "trade finance Zimbabwe", "diaspora banking", "wealth management Harare",
         ]}
         jsonLd={[
           organizationJsonLd(),
           websiteJsonLd(),
-          breadcrumbJsonLd([{ name: "Home", path: "/" }]),
+          breadcrumbJsonLd([{ name: "Cover", path: "/" }]),
         ]}
       />
 
-      {/* § I — Hero carousel + ticker */}
-      <HomeHeroCarousel />
-      <TickerStrip tone="ink" />
+      {/* The cover */}
+      <Cover />
 
-      {/* § II — Quick actions (small interlude before chapter II) */}
-      <QuickActionStrip actions={QUICK_ACTIONS.general} tint="navy" />
+      {/* I. The Bank — paper spread, image left */}
+      <Spread
+        numeral="I."
+        folio="Chap. I · The Bank"
+        eyebrow="The first instrument"
+        headline="Every account on one shelf."
+        dek="For households, for commerce, for the considered, for institutions. The bank is the most ordinary thing the institution does, and the most important."
+        body={[
+          "The flagship deposit-taking institution of the Bard Santner Group is Bard Santner Microfinance Bank, BSMFB. The bank's job is the boring one: hold the deposit as a deposit, extend credit on the conversation, and clear the day on the day. Done well, that is enough for a century.",
+          "We are not building a banking app. We are building a bank, and the app is the way clients reach it. Same banker, same conversation, same standard — without the queue.",
+        ]}
+        image={HERO.banking}
+        caption="At the counter — first light, Beverly Court, Harare."
+        cta={{ label: "Open the chapter", to: "/banking" }}
+        side="left"
+        tone="paper"
+      />
 
-      {/* Chapter II — Audiences */}
-      <ChapterMark
+      {/* II. The Counsel — cabernet plate, image right */}
+      <Spread
         numeral="II."
-        eyebrow="Chapter II · Audiences"
-        headline="Five clear contexts. One bank."
-        standfirst="The institution organises itself around the lives it banks. Personal, business, private, international, institutional — each with its own desk, its own banker, its own conversation."
-        signature="— Choose the one your next conversation belongs in."
+        folio="Chap. II · The Counsel"
+        eyebrow="By appointment"
+        headline="Patient capital. Patient counsel."
+        dek="Discretionary mandates, advisory portfolios and the long counsel of an international house — anchored in Africa."
+        body={[
+          "Bard Santner Wealth is the division of the institution that meets clients at a longer horizon. Discretionary mandates, advisory portfolios, structured credit and the second conversation that every wealth relationship eventually arrives at.",
+          "The relationship is with a named banker; the mandate is written down; the conversation continues until the principal asks it to end.",
+        ]}
+        image={MARQUEE.wealth}
+        caption="The atrium — by appointment, on the upper floor."
+        cta={{ label: "Open the counsel", to: "/wealth" }}
+        side="right"
+        tone="cabernet"
       />
-      <div className="relative artifact-monogram-soft">
-        <AudienceTiles heading="Banking experiences" />
-      </div>
 
-      <div className="bg-milk">
-        <div className="container-bank py-2 md:py-4">
-          <OrnamentDivider ornament="§" />
-        </div>
-      </div>
-
-      {/* Chapter III — The numbers */}
-      <ChapterMark
+      {/* III. The Desk — paper, image left */}
+      <Spread
         numeral="III."
-        eyebrow="Chapter III · The numbers"
-        headline="The institution as a measurable thing."
-        standfirst="Five figures. None inflated, none audited yet — the directional posture of a bank that intends to be counted, not the claim of one that has already been."
-        tone="parchment"
-      />
-      <div className="relative artifact-monogram-soft">
-        <StatsBand />
-      </div>
-
-      {/* Pull-quote interlude — Sikhosana */}
-      <PullQuote
-        quote="A bank is signed by its people. The CEO is named. The bankers are named. The complaint reaches a person, not a queue. Accountability cannot be abstract."
-        authorName="Senziwani Sikhosana"
-        tone="ink"
-      />
-
-      {/* Chapter IV — Wealth */}
-      <WealthMarquee />
-
-      <div className="bg-milk">
-        <div className="container-bank py-2 md:py-4">
-          <OrnamentDivider ornament="◆" tone="gold" />
-        </div>
-      </div>
-
-      {/* Chapter V — Featured products */}
-      <ProductGrid
-        eyebrow="§ V · Featured solutions"
-        heading="Four ways to start."
-        products={featuredProducts}
+        folio="Chap. III · The Desk"
+        eyebrow="The book is the book"
+        headline="Treasury. Trade. Markets."
+        dek="The capital-markets desk: liquidity, FX, debt-capital-markets origination and trade finance — the desk-grade infrastructure on which a serious treasurer runs an institution."
+        body={[
+          "Markets is a memory business. The desk's work is keeping its relationships with regulators, correspondents and counterparties intact across the years. Bonds are originated, paper is syndicated, the day is reconciled — and tomorrow the desk opens again at eight.",
+          "We do not run the desk to look busy. We run it to be reachable.",
+        ]}
+        image={HERO.markets}
+        caption="End-of-day. The book is reconciled."
+        cta={{ label: "Approach the desk", to: "/markets" }}
+        side="left"
+        tone="paper"
       />
 
-      {/* Chapter VI — The Corridor */}
-      <ChapterMark
-        numeral="VI."
-        eyebrow="Chapter VI · The corridor"
-        headline="Where we operate. And where we are next."
-        standfirst="The bank built on cross-border rails. Harare flagship; offices and desks in Johannesburg, Cape Town, London; a corridor map drawn through Lagos, Mombasa, Nairobi."
-        tone="parchment"
-      />
-      <section className="bg-parchment relative overflow-hidden">
-        <div className="container-bank py-12 md:py-20">
-          <div className="text-burgundy-500">
-            <VintageMap />
-          </div>
-        </div>
-      </section>
-
-      <div className="bg-milk">
-        <div className="container-bank py-2 md:py-4">
-          <OrnamentDivider ornament="§" />
-        </div>
-      </div>
-
-      {/* Chapter VII — The Group */}
-      <GroupRibbon />
-
-      {/* Pull-quote interlude — Mthimkhulu */}
-      <PullQuote
-        quote="Capital markets is a memory business. The work is making sure the desk's relationships with regulators, correspondents and counterparties are still good ten years from now."
-        authorName="Alfred Mthimkhulu"
-        tone="burgundy"
+      {/* IV. The Almanac — print plate, image right */}
+      <Spread
+        numeral="IV."
+        folio="Chap. IV · The Almanac"
+        eyebrow="From the desk to the reader"
+        headline="A bank that publishes."
+        dek="Editorial commentary by the people who run the desks. Quarterly print, weekly online — Bardiq Journal carries the long form."
+        body={[
+          "An institution that does not publish what it thinks is, in our reading, an institution that does not know what it thinks. Bardiq Journal is the second discipline of this house: short reads online, long reads in print, signed by the people on the desks.",
+          "Nothing we publish would survive a second reading we cannot answer for.",
+        ]}
+        image={HERO.insights}
+        caption="The reading room — Gladstone's Library, by reference."
+        cta={{ label: "Read the almanac", to: "/insights" }}
+        side="right"
+        tone="print"
       />
 
-      {/* Chapter VIII — Editorial */}
-      <InsightsRail
-        eyebrow="§ VIII · Editorial"
-        heading="Reading from the desk."
-        items={INSIGHTS.slice(0, 3)}
-      />
-
-      {/* Chapter IX — Founding timeline + signed letter */}
-      <FoundingTimeline tone="parchment" />
-
-      <SignedLetter
+      {/* V. Letterpress — the CEO's letter */}
+      <Letterpress
         authorName="Senziwani Sikhosana"
         authorRole="Chief Executive Officer"
         dateline="2 May 2026 · Harare"
+        folio="Chap. V · A letter to the reader"
         salutation="To the reader,"
         paragraphs={[
-          "A bank is two things at once. A regulated, capital-bearing institution operating under licence. And a relationship — held by a name, between two people, over the longest horizon either of them can plan for. Most African banks choose one and ignore the other. We chose both, in the same building, signed by the same person.",
-          "We are young. We are also serious. The discipline of the international house and the warmth of the African one are not in tension. They are the same job done well, and they are how we intend to be remembered.",
-          "If you are reading this in 2026, you are reading the beginning of a serious bank. If you are reading it in 2096, I hope the institution has earned the time you are giving it.",
+          "A bank is two things at once. A regulated, capital-bearing institution operating under licence. And a relationship — held by a name, between two people, over the longest horizon either of them can plan for. Most African banks have chosen one and ignored the other. We chose both, in the same building, signed by the same person.",
+          "If you are reading this in 2026, you are reading the beginning of a serious bank. If you are reading it in 2096, we hope the institution has earned the time you are giving it.",
         ]}
         closing="Yours, in commerce,"
-        tone="parchment"
       />
-
-      {/* Chapter X — Advisory */}
-      <AdvisoryBand />
-
-      {/* Chapter XI — Trust */}
-      <TrustRibbon />
     </PageTransition>
   );
 }

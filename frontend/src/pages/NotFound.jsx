@@ -1,27 +1,31 @@
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition.jsx";
 import SEO from "../components/SEO.jsx";
-import Monogram from "../components/Monogram.jsx";
 
+/**
+ * 404 — printed errata page.
+ *
+ * Treated like a missing page in a magazine: a small typographic
+ * notice, the relevant folio numbers, and a return-to-cover.
+ */
 export default function NotFound() {
   return (
     <PageTransition>
-      <SEO title="Page not found" description="The page you were looking for could not be found." path="/404" noindex />
-      <section className="min-h-[70vh] bg-milk flex items-center">
-        <div className="container-bank text-center max-w-xl mx-auto py-14 md:py-20">
-          <Monogram size={48} color="var(--color-orange-500)" className="mx-auto mb-6 md:mb-8 md:!h-14 md:!w-14" />
-          <p className="eyebrow eyebrow-accent mb-3 md:mb-4">§ 404</p>
-          <h1 className="display-xl text-navy-600 mb-5 md:mb-6">
-            We could not find that page.
+      <SEO title="Errata · Page not found" path="/404" noindex />
+      <section className="surface-paper min-h-[80vh] flex items-center">
+        <div className="page-narrow text-center py-20">
+          <p className="t-eyebrow text-cabernet-500 mb-5">§ Errata · pg. 0</p>
+          <h1 className="t-headline text-print mb-7">
+            This page is not in the publication.
           </h1>
-          <p className="text-[15px] md:text-[16px] text-bone-600 mb-8 md:mb-10 leading-relaxed">
-            The link may be out of date, the page may have moved, or the URL may have a typo.
-            Either way: the door is still open.
+          <p className="font-italic italic text-[18px] md:text-[20px] text-walnut mb-10 max-w-md mx-auto leading-relaxed">
+            The folio you asked for has not been set, or the printer
+            misnumbered the running head. Either way, the cover
+            remains in print.
           </p>
-          <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-center gap-3">
-            <Link to="/" className="btn btn-primary w-full sm:w-auto justify-center">Back to home</Link>
-            <Link to="/contact" className="btn btn-ghost-light w-full sm:w-auto justify-center">Get in touch</Link>
-          </div>
+          <Link to="/" className="btn-letterpress btn-letterpress-cabernet">
+            ↺ &nbsp; Return to the cover
+          </Link>
         </div>
       </section>
     </PageTransition>

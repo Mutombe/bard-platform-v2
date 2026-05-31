@@ -2,40 +2,26 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { Component } from "react";
 
-import MegaNav from "./components/MegaNav.jsx";
-import Footer from "./components/Footer.jsx";
+import NavZine    from "./components/zine/NavZine.jsx";
+import Colophon   from "./components/zine/Colophon.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 
-import Home from "./pages/Home.jsx";
-import Personal from "./pages/audiences/Personal.jsx";
-import Business from "./pages/audiences/Business.jsx";
-import PrivateBanking from "./pages/audiences/PrivateBanking.jsx";
-import International from "./pages/audiences/International.jsx";
-import Institutional from "./pages/audiences/Institutional.jsx";
-import About from "./pages/About.jsx";
-import Group from "./pages/Group.jsx";
-import GroupEntity from "./pages/GroupEntity.jsx";
-import Leadership from "./pages/Leadership.jsx";
-import Insights from "./pages/Insights.jsx";
-import InsightDetail from "./pages/InsightDetail.jsx";
-import ProductDetail from "./pages/ProductDetail.jsx";
-import Banking from "./pages/Banking.jsx";
-import Wealth from "./pages/Wealth.jsx";
-import Markets from "./pages/Markets.jsx";
-import OnlineBanking from "./pages/OnlineBanking.jsx";
-import Login from "./pages/Login.jsx";
-import AppDashboard from "./pages/AppDashboard.jsx";
-import Contact from "./pages/Contact.jsx";
-import Locations from "./pages/Locations.jsx";
-import Security from "./pages/Security.jsx";
-import Legal from "./pages/Legal.jsx";
-import Privacy from "./pages/Privacy.jsx";
-import Cookies from "./pages/Cookies.jsx";
-import Terms from "./pages/Terms.jsx";
-import Regulatory from "./pages/Regulatory.jsx";
-import Accessibility from "./pages/Accessibility.jsx";
-import Complaints from "./pages/Complaints.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import Home       from "./pages/Home.jsx";
+import NotFound   from "./pages/NotFound.jsx";
+import UnderPress from "./pages/UnderPress.jsx";
+
+/**
+ * V2 app shell — Annual Letter paradigm.
+ *
+ * NavZine at the top (masthead with magazine-spread dropdowns).
+ * Colophon at the bottom (publisher's colophon, replaces v1 footer).
+ * Pages render between them.
+ *
+ * Routes that have not yet been typeset for v2 render UnderPress —
+ * a "this chapter is being composed at the press" notice. As each
+ * chapter gets its bespoke spread, the route is replaced with the
+ * real page.
+ */
 
 class ErrorBoundary extends Component {
   constructor(props) { super(props); this.state = { hasError: false }; }
@@ -44,18 +30,15 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-[60vh] flex items-center justify-center p-10 text-center bg-milk">
+        <div className="min-h-[60vh] surface-paper flex items-center justify-center p-10 text-center">
           <div>
-            <p className="eyebrow eyebrow-accent mb-4">A service interruption</p>
-            <h1 className="display-lg mb-4 text-navy-600">
-              We were unable to complete that request.
-            </h1>
-            <p className="text-bone-600 mb-8 max-w-md mx-auto">
-              The fault is on our side. Please refresh, or return to the
-              homepage and try again.
+            <p className="t-eyebrow text-cabernet-500 mb-3">§ A service interruption</p>
+            <h1 className="t-headline text-print mb-5">The press has jammed.</h1>
+            <p className="font-italic italic text-[16px] text-walnut mb-8 max-w-md mx-auto">
+              The fault is on our side. Please refresh, or return to the cover and try again.
             </p>
-            <button onClick={() => window.location.reload()} className="btn btn-navy">
-              Refresh
+            <button onClick={() => window.location.reload()} className="btn-letterpress btn-letterpress-cabernet">
+              ↺ &nbsp; Refresh
             </button>
           </div>
         </div>
@@ -67,17 +50,10 @@ class ErrorBoundary extends Component {
 
 export default function App() {
   const location = useLocation();
-
-  // Routes that run their own application shell (own topbar / sidebar
-  // / no public Nav + Footer). The public marketing chrome is
-  // suppressed for these to keep the surface focused.
-  const isAppShellRoute =
-    location.pathname === "/login" || location.pathname.startsWith("/app");
-
   return (
     <>
       <ScrollToTop />
-      {!isAppShellRoute && <MegaNav />}
+      <NavZine />
 
       <main>
         <ErrorBoundary>
@@ -85,49 +61,37 @@ export default function App() {
             <Routes location={location} key={location.pathname}>
               <Route path="/" element={<Home />} />
 
-              {/* Audience landings */}
-              <Route path="/personal" element={<Personal />} />
-              <Route path="/business" element={<Business />} />
-              <Route path="/private-banking" element={<PrivateBanking />} />
-              <Route path="/international" element={<International />} />
-              <Route path="/institutional" element={<Institutional />} />
-
-              {/* Top-level service hubs */}
-              <Route path="/banking" element={<Banking />} />
-              <Route path="/wealth" element={<Wealth />} />
-              <Route path="/markets" element={<Markets />} />
-              <Route path="/online-banking" element={<OnlineBanking />} />
-
-              {/* App shell — own layout, no public Nav/Footer */}
-              <Route path="/login" element={<Login />} />
-              <Route path="/app" element={<AppDashboard />} />
-
-              {/* Products */}
-              <Route path="/products/:slug" element={<ProductDetail />} />
-
-              {/* Institution */}
-              <Route path="/about" element={<About />} />
-              <Route path="/group" element={<Group />} />
-              <Route path="/group/:slug" element={<GroupEntity />} />
-              <Route path="/leadership" element={<Leadership />} />
-
-              {/* Editorial */}
-              <Route path="/insights" element={<Insights />} />
-              <Route path="/insights/:slug" element={<InsightDetail />} />
-
-              {/* Contact / locations */}
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/locations" element={<Locations />} />
-
-              {/* Trust + legal */}
-              <Route path="/security" element={<Security />} />
-              <Route path="/legal" element={<Legal />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/cookies" element={<Cookies />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/regulatory" element={<Regulatory />} />
-              <Route path="/accessibility" element={<Accessibility />} />
-              <Route path="/complaints" element={<Complaints />} />
+              {/* Chapters being typeset — all render UnderPress with
+                  their own folio + chapter label until the bespoke
+                  spread ships. */}
+              <Route path="/banking"          element={<UnderPress folio="Chap. I"   chapter="The Bank" />} />
+              <Route path="/wealth"           element={<UnderPress folio="Chap. II"  chapter="The Counsel" />} />
+              <Route path="/markets"          element={<UnderPress folio="Chap. III" chapter="The Desk" />} />
+              <Route path="/insights"         element={<UnderPress folio="Chap. IV"  chapter="The Almanac" />} />
+              <Route path="/insights/:slug"   element={<UnderPress folio="Chap. IV"  chapter="This entry of the Almanac" />} />
+              <Route path="/group"            element={<UnderPress folio="Chap. V"   chapter="The House" />} />
+              <Route path="/group/:slug"      element={<UnderPress folio="Chap. V"   chapter="This institution of the House" />} />
+              <Route path="/about"            element={<UnderPress folio="Chap. VI"  chapter="Provenance" />} />
+              <Route path="/leadership"       element={<UnderPress folio="Chap. VI"  chapter="The Names" />} />
+              <Route path="/locations"        element={<UnderPress folio="Chap. VI"  chapter="The Places" />} />
+              <Route path="/contact"          element={<UnderPress folio="Chap. VI"  chapter="The Door" />} />
+              <Route path="/products/:slug"   element={<UnderPress folio="Instrument" chapter="This instrument" />} />
+              <Route path="/personal"         element={<UnderPress folio="Station"   chapter="For Households" />} />
+              <Route path="/business"         element={<UnderPress folio="Station"   chapter="For Commerce" />} />
+              <Route path="/private-banking"  element={<UnderPress folio="Station"   chapter="By Appointment" />} />
+              <Route path="/international"    element={<UnderPress folio="Station"   chapter="For the Diaspora" />} />
+              <Route path="/institutional"    element={<UnderPress folio="Station"   chapter="For Institutions" />} />
+              <Route path="/online-banking"   element={<UnderPress folio="The Wire"  chapter="Through the Wire" />} />
+              <Route path="/login"            element={<UnderPress folio="The Lobby" chapter="Enter the Lobby" />} />
+              <Route path="/app"              element={<UnderPress folio="The App"   chapter="Glimpse the app" />} />
+              <Route path="/security"         element={<UnderPress folio="The Warrant" chapter="On Security" />} />
+              <Route path="/legal"            element={<UnderPress folio="By Letter" chapter="Legal" />} />
+              <Route path="/privacy"          element={<UnderPress folio="On Privacy" chapter="Privacy" />} />
+              <Route path="/cookies"          element={<UnderPress folio="Cookies" chapter="Cookies" />} />
+              <Route path="/terms"            element={<UnderPress folio="Terms" chapter="Terms" />} />
+              <Route path="/regulatory"       element={<UnderPress folio="The Warrant" chapter="Regulatory" />} />
+              <Route path="/accessibility"    element={<UnderPress folio="Accessibility" chapter="Accessibility" />} />
+              <Route path="/complaints"       element={<UnderPress folio="Grievance" chapter="On Grievance" />} />
 
               <Route path="*" element={<NotFound />} />
             </Routes>
@@ -135,7 +99,7 @@ export default function App() {
         </ErrorBoundary>
       </main>
 
-      {!isAppShellRoute && <Footer />}
+      <Colophon />
     </>
   );
 }
