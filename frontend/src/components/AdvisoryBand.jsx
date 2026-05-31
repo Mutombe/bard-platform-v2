@@ -39,10 +39,10 @@ export default function AdvisoryBand() {
         <div className="grid grid-cols-12 gap-10 md:gap-12 items-center">
           {/* Left — manifesto */}
           <SectionReveal className="col-span-12 md:col-span-7">
-            <p className="eyebrow mb-3 md:mb-4">§ 06 · Advisory</p>
+            <p className="eyebrow mb-3 md:mb-4">§ Chapter X · The Door</p>
             <h2 className="display-xl text-navy-600 text-balance">
               We bank by relationship.{" "}
-              <span className="text-navy-600">Start one.</span>
+              <span className="text-navy-600">Open one.</span>
             </h2>
             <p className="mt-5 md:mt-6 text-[15.5px] md:text-[16px] text-bone-600 max-w-xl leading-relaxed">
               The first conversation costs nothing and commits nothing.
@@ -64,7 +64,7 @@ export default function AdvisoryBand() {
                 <div className="flex items-center gap-3 mb-5">
                   <span className="h-[2px] w-7 bg-orange-500" />
                   <p className="font-mono text-[10px] tracking-[0.22em] uppercase font-medium text-orange-400">
-                    Open a conversation
+                    The Door · Open a conversation
                   </p>
                 </div>
 
@@ -100,7 +100,7 @@ export default function AdvisoryBand() {
                   to="/contact"
                   className="mt-5 inline-flex items-center justify-center gap-2 bg-milk text-navy-700 hover:bg-paper px-6 py-3.5 rounded-lg font-medium text-[14.5px] transition-colors w-full"
                 >
-                  Request a banker
+                  Open a private conversation
                   <ArrowRightIcon size={14} weight="bold" />
                 </Link>
               </div>
@@ -110,7 +110,7 @@ export default function AdvisoryBand() {
             <div className="hidden md:block bg-paper rounded-xl p-10 shadow-[var(--shadow-card-lift)] border border-bone-200/60">
               <div className="flex items-center gap-3 mb-6">
                 <span className="h-[2px] w-8 bg-orange-500" />
-                <p className="eyebrow eyebrow-accent">Open a conversation</p>
+                <p className="eyebrow eyebrow-accent">The Door · Open a conversation</p>
               </div>
 
               <div className="space-y-3">

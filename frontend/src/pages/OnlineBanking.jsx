@@ -44,10 +44,10 @@ import { HERO } from "../data/images.js";
  */
 
 const ONLINE_QUICK_ACTIONS = [
-  { label: "Log in to Online Banking", path: "/login" },
-  { label: "Open an account", path: "/personal" },
-  { label: "Preview the app", path: "/app" },
-  { label: "Help & support", path: "/contact" },
+  { label: "Enter the Lobby",        path: "/login" },
+  { label: "Open a Current",         path: "/personal" },
+  { label: "Glimpse the app",        path: "/app" },
+  { label: "Open a conversation",    path: "/contact" },
 ];
 
 const CAPABILITIES = [
@@ -78,7 +78,7 @@ const CAPABILITIES = [
   },
   {
     icon: ChatCircleIcon,
-    title: "Speak to a banker",
+    title: "Approach a real banker",
     body: "In-app messaging that reaches a real banker, not a chatbot. Mon–Fri 08:00–17:00 CAT, with after-hours escalation for urgent matters.",
   },
 ];

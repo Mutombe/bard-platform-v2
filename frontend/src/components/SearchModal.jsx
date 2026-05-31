@@ -78,27 +78,27 @@ function buildIndex() {
     items.push({
       id: `a-${a.id}`,
       type: "audience",
-      title: `${a.label} banking`,
-      eyebrow: "Audience",
+      title: `${a.label_full || a.label}`,
+      eyebrow: "Station",
       summary: a.eyebrow || `Banking for ${a.id}`,
       path: a.path,
       keywords: [a.label, a.label_full, a.id].join(" "),
     })
   );
-  // Static destinations
+  // V2 — Static destinations in the editorial voice
   [
-    { title: "Banking", path: "/banking", summary: "All banking products on one shelf", eyebrow: "Service" },
-    { title: "Wealth", path: "/wealth", summary: "Discretionary mandates, advisory portfolios, structured credit", eyebrow: "Service" },
-    { title: "Markets & Treasury", path: "/markets", summary: "Treasury, FX, debt capital markets, trade finance", eyebrow: "Service" },
-    { title: "Online Banking", path: "/online-banking", summary: "Manage accounts, send and receive, pay bills, monitor in real time", eyebrow: "Digital" },
-    { title: "Log in", path: "/login", summary: "Continue with Google, Apple, or your Bard Santner credentials", eyebrow: "Digital" },
-    { title: "Banking app dashboard", path: "/app", summary: "Accounts, transfers, statements — the signed-in customer view", eyebrow: "Digital" },
-    { title: "The Group", path: "/group", summary: "Five institutions, one discipline", eyebrow: "About" },
-    { title: "About Bard Santner", path: "/about", summary: "A modern African financial platform", eyebrow: "About" },
-    { title: "Leadership", path: "/leadership", summary: "Named, accountable, reachable", eyebrow: "About" },
-    { title: "Locations", path: "/locations", summary: "Branches, desks, representative offices", eyebrow: "About" },
-    { title: "Contact", path: "/contact", summary: "Telephone, email, WhatsApp, by appointment", eyebrow: "Reach" },
-    { title: "Insights", path: "/insights", summary: "Editorial commentary from the desk", eyebrow: "Reading" },
+    { title: "The Bank",           path: "/banking",        summary: "Every instrument on one shelf — for households, commerce, the considered, institutions", eyebrow: "Chapter" },
+    { title: "The Counsel",        path: "/wealth",         summary: "Discretionary mandates, advisory portfolios, structured credit", eyebrow: "Chapter" },
+    { title: "The Desk",           path: "/markets",        summary: "Treasury, FX, debt-capital-markets origination, trade finance", eyebrow: "Chapter" },
+    { title: "Through the Wire",   path: "/online-banking", summary: "Manage accounts, send and receive, monitor in real time", eyebrow: "Digital" },
+    { title: "Enter the Lobby",    path: "/login",          summary: "Continue with Google, Apple, or your credentials", eyebrow: "Digital" },
+    { title: "Glimpse the app",    path: "/app",            summary: "Accounts, transfers, statements — the signed-in customer view", eyebrow: "Digital" },
+    { title: "The House",          path: "/group",          summary: "Five institutions, one discipline", eyebrow: "Provenance" },
+    { title: "Provenance",         path: "/about",          summary: "A modern African financial platform — the manifesto", eyebrow: "Provenance" },
+    { title: "The Names",          path: "/leadership",     summary: "Named, accountable, reachable", eyebrow: "Provenance" },
+    { title: "The Places",         path: "/locations",      summary: "Branches, desks, representative offices", eyebrow: "Provenance" },
+    { title: "The Door",           path: "/contact",        summary: "Telephone, email, WhatsApp, by appointment", eyebrow: "Reach" },
+    { title: "The Almanac",        path: "/insights",       summary: "Editorial commentary from the desk", eyebrow: "Reading" },
   ].forEach((p) =>
     items.push({
       id: `s-${p.path}`,

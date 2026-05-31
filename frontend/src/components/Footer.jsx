@@ -12,61 +12,62 @@ import { Link } from "react-router-dom";
  *   © + regulatory disclosure + back to top
  */
 
+// V2 — Footer columns in the editorial voice
 const COLUMNS = [
   {
-    title: "Banking",
+    title: "The Bank",
     links: [
-      { label: "Current accounts", to: "/products/everyday-account" },
-      { label: "Savings", to: "/products/savings-account" },
-      { label: "Home loans", to: "/products/home-loan" },
-      { label: "Business accounts", to: "/products/business-account" },
-      { label: "Working capital", to: "/products/working-capital" },
-      { label: "Private Banking", to: "/private-banking" },
-      { label: "International", to: "/international" },
+      { label: "The Current",           to: "/products/everyday-account" },
+      { label: "The Savings Book",      to: "/products/savings-account" },
+      { label: "The Mortgage",          to: "/products/home-loan" },
+      { label: "The Operating Account", to: "/products/business-account" },
+      { label: "Working Capital",       to: "/products/working-capital" },
+      { label: "By Appointment",        to: "/private-banking" },
+      { label: "The Diaspora",          to: "/international" },
     ],
   },
   {
-    title: "Markets & Treasury",
+    title: "The Desk & Counsel",
     links: [
-      { label: "Trade Finance", to: "/products/trade-finance" },
-      { label: "Foreign Exchange", to: "/products/foreign-exchange" },
-      { label: "Treasury Services", to: "/products/treasury-services" },
-      { label: "Debt Capital Markets", to: "/products/debt-capital-markets" },
-      { label: "Wealth Management", to: "/products/wealth-management" },
-      { label: "Structured Credit", to: "/products/structured-credit" },
+      { label: "Cross-border Trade",    to: "/products/trade-finance" },
+      { label: "Foreign Exchange",      to: "/products/foreign-exchange" },
+      { label: "Treasury & FX",         to: "/products/treasury-services" },
+      { label: "Origination (DCM)",     to: "/products/debt-capital-markets" },
+      { label: "Discretionary Mandate", to: "/products/wealth-management" },
+      { label: "Structured Credit",     to: "/products/structured-credit" },
     ],
   },
   {
-    title: "Help & security",
+    title: "The Warrant",
     links: [
-      { label: "Online Banking", to: "/online-banking" },
-      { label: "Contact us", to: "/contact" },
-      { label: "Locations", to: "/locations" },
-      { label: "Security", to: "/security" },
-      { label: "Complaints", to: "/complaints" },
-      { label: "Accessibility", to: "/accessibility" },
-      { label: "Service status", to: "/status" },
+      { label: "Through the Wire",      to: "/online-banking" },
+      { label: "The Door",              to: "/contact" },
+      { label: "The Places",            to: "/locations" },
+      { label: "On Security",           to: "/security" },
+      { label: "On Grievance",          to: "/complaints" },
+      { label: "On Accessibility",      to: "/accessibility" },
+      { label: "On the Day's State",    to: "/status" },
     ],
   },
   {
-    title: "About",
+    title: "Provenance",
     links: [
-      { label: "About Bard Santner", to: "/about" },
-      { label: "The Group", to: "/group" },
-      { label: "Leadership", to: "/leadership" },
-      { label: "Insights", to: "/insights" },
-      { label: "Bardiq Journal", to: "/group/journal" },
-      { label: "Careers", to: "/careers" },
-      { label: "Press room", to: "/press" },
+      { label: "Provenance",             to: "/about" },
+      { label: "The House",              to: "/group" },
+      { label: "The Names",              to: "/leadership" },
+      { label: "The Almanac",            to: "/insights" },
+      { label: "Bardiq Journal",         to: "/group/journal" },
+      { label: "Apprenticeships",        to: "/careers" },
+      { label: "Press Room",             to: "/press" },
     ],
   },
 ];
 
 const LOCATIONS = [
-  { city: "Harare", line: "5th Floor Beverly Court, 100 Nelson Mandela Avenue" },
-  { city: "Bulawayo", line: "Branch coming 2026 Q3" },
-  { city: "Johannesburg", line: "Representative office, Sandton" },
-  { city: "London", line: "Diaspora desk, Canary Wharf" },
+  { city: "Harare",       line: "The Flagship · 5th Floor Beverly Court, 100 Nelson Mandela Ave." },
+  { city: "Bulawayo",     line: "Opening · 2026 Q3" },
+  { city: "Johannesburg", line: "By Appointment · Sandton" },
+  { city: "London",       line: "The Diaspora Desk · Canary Wharf" },
 ];
 
 export default function Footer() {
@@ -86,9 +87,9 @@ export default function Footer() {
             <p className="mt-6 md:mt-8 text-[14px] text-white/65 leading-relaxed max-w-xs">
               A modern African financial platform. Banking, markets, advisory.
             </p>
-            <p className="mt-6 md:mt-8 eyebrow eyebrow-on-dark mb-3">Open an account</p>
+            <p className="mt-6 md:mt-8 eyebrow eyebrow-on-dark mb-3">Open a Current</p>
             <Link to="/personal" className="btn btn-primary text-[13.5px] py-3 px-5">
-              Get started
+              Begin the conversation
             </Link>
           </div>
 
@@ -118,8 +119,8 @@ export default function Footer() {
       <div className="container-bank py-8 md:py-10">
         <div className="grid grid-cols-12 gap-6 md:gap-8">
           <div className="col-span-12 md:col-span-3">
-            <p className="eyebrow eyebrow-on-dark mb-1">Where we operate</p>
-            <p className="font-display text-[18px] md:text-[20px] text-white">Offices and desks</p>
+            <p className="eyebrow eyebrow-on-dark mb-1">The Places</p>
+            <p className="font-display text-[18px] md:text-[20px] text-white">Branches, desks and diaspora offices.</p>
           </div>
           {LOCATIONS.map((loc) => (
             <div key={loc.city} className="col-span-6 md:col-span-2 lg:col-span-2">
@@ -136,19 +137,19 @@ export default function Footer() {
       <div className="container-bank py-7 md:py-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-5 md:gap-6 text-[12px] text-white/55">
           <div className="flex flex-wrap items-center gap-x-5 md:gap-x-6 gap-y-2">
-            <span>© {new Date().getFullYear()} Bard Santner Markets Inc</span>
-            <Link to="/legal" className="hover-line hover:text-white">Legal</Link>
-            <Link to="/privacy" className="hover-line hover:text-white">Privacy</Link>
+            <span>© Anno {new Date().getFullYear()} · Bard Santner Markets Inc</span>
+            <Link to="/legal" className="hover-line hover:text-white">By Letter</Link>
+            <Link to="/privacy" className="hover-line hover:text-white">On Privacy</Link>
             <Link to="/cookies" className="hover-line hover:text-white">Cookies</Link>
             <Link to="/terms" className="hover-line hover:text-white">Terms</Link>
-            <Link to="/regulatory" className="hover-line hover:text-white">Regulatory</Link>
-            <Link to="/sitemap" className="hover-line hover:text-white">Sitemap</Link>
+            <Link to="/regulatory" className="hover-line hover:text-white">The Warrant</Link>
+            <Link to="/sitemap" className="hover-line hover:text-white">Contents</Link>
           </div>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="hover-line hover:text-white self-start md:self-auto"
           >
-            Back to top ↑
+            Return to the cover ↑
           </button>
         </div>
 

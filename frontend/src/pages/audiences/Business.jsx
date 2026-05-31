@@ -28,8 +28,8 @@ export default function Business() {
         eyebrow={audience.eyebrow}
         headline="Banking that works as hard as your business."
         body="Operating accounts, working capital and trade rails for the African enterprise."
-        primaryCTA={{ to: "/products/business-account", label: "Open a Business Account" }}
-        secondaryCTA={{ to: "/products/working-capital", label: "Apply for working capital" }}
+        primaryCTA={{ to: "/products/business-account", label: "Open the Operating Account" }}
+        secondaryCTA={{ to: "/products/working-capital", label: "Approach for Working Capital" }}
         image={HERO.business}
         overlayTint="navy"
       />

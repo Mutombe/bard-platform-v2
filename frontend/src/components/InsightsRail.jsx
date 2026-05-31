@@ -37,7 +37,7 @@ export default function InsightsRail({ heading, eyebrow, items = [] }) {
             </h2>
           </div>
           <Link to="/insights" className="hover-line text-[14px] font-medium text-orange-600 inline-flex">
-            View all insights →
+            All entries in the Almanac →
           </Link>
         </div>
 
