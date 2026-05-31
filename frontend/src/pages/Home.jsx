@@ -41,12 +41,12 @@ export default function Home() {
         jsonLd={[organizationJsonLd(), websiteJsonLd(), breadcrumbJsonLd([{ name: "Home", path: "/" }])]}
       />
 
-      {/* 1. Hero */}
+      {/* 1. Hero — locked to a single viewport */}
       <HeroSerious />
 
-      {/* 2. By the numbers */}
+      {/* 2. By the numbers — confident vertical air */}
       <section className="surface-white">
-        <div className="container-wide py-20 md:py-24">
+        <div className="container-wide py-24 md:py-32 lg:py-40">
           <SectionHeader
             eyebrow="By the Numbers"
             headline="The institution as a measurable thing."
@@ -65,7 +65,7 @@ export default function Home() {
 
       {/* 3. What we do — capability grid */}
       <section className="surface-cream">
-        <div className="container-wide py-20 md:py-28">
+        <div className="container-wide py-24 md:py-32 lg:py-40">
           <SectionHeader
             eyebrow="What We Do"
             headline="A single institution, four disciplines."
@@ -102,13 +102,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 4. Wealth feature spread */}
+      {/* 4. Wealth feature spread — image left, blends right toward text */}
       <FeatureSpread
         eyebrow="Private Wealth"
         title="Patient capital. Patient counsel."
         dek="Bard Santner Wealth serves households of established consequence — discretionary mandates, advisory portfolios and the long counsel of an international house, anchored in Africa."
         body={[
           "Our wealth practice is named. The mandate is written down. The relationship is with a senior banker who carries it across decades — and the conversation continues until the principal asks it to end.",
+          "Three generations is a reasonable horizon. Anything shorter is not really wealth — it is income, planned.",
         ]}
         image={MARQUEE.wealth}
         caption="Above — the wealth division, by appointment."
@@ -119,13 +120,14 @@ export default function Home() {
 
       <div className="container-wide"><hr className="hairline" /></div>
 
-      {/* 5. Markets feature spread */}
+      {/* 5. Markets feature spread — image right, blends left toward text */}
       <FeatureSpread
         eyebrow="Markets & Treasury"
         title="The desk-grade infrastructure institutional treasurers expect."
         dek="Capital markets origination, treasury services, foreign exchange and trade finance — from the parent institution that holds the long correspondent-banking memory."
         body={[
           "Markets is a memory business. The desk's relationships with regulators, correspondents and counterparties are the asset. Bonds are originated, paper is syndicated, the day is reconciled. Tomorrow, the desk opens again.",
+          "We do not run the desk to look busy. We run it to be reachable — by clients, by regulators, by the people on the other side of the trade.",
         ]}
         image={HERO.markets}
         caption="Above — end-of-day on the markets floor."
@@ -136,7 +138,7 @@ export default function Home() {
 
       {/* 6. Research & Insights */}
       <section className="surface-white">
-        <div className="container-wide py-20 md:py-28">
+        <div className="container-wide py-24 md:py-32 lg:py-40">
           <SectionHeader
             eyebrow="Research & Insights"
             headline="From the desks that wrote them."

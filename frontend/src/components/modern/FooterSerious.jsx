@@ -68,7 +68,8 @@ export default function FooterSerious() {
     <footer className="surface-navy-deep relative">
       {/* Top — five column dense sitemap */}
       <div className="container-wide pt-16 md:pt-24 pb-12 md:pb-16">
-        <div className="grid grid-cols-12 gap-x-8 gap-y-10">
+        {/* gap-x-0 on mobile prevents column overflow on narrow phones */}
+        <div className="grid grid-cols-12 gap-x-0 sm:gap-x-6 lg:gap-x-8 gap-y-10">
           {/* Brand column */}
           <div className="col-span-12 md:col-span-12 lg:col-span-3 mb-6 lg:mb-0">
             <Link to="/" className="flex items-center gap-3 mb-7">
@@ -90,7 +91,10 @@ export default function FooterSerious() {
             </Link>
           </div>
 
-          {/* Five link columns */}
+          {/* Five link columns — clean stacking:
+              mobile 2-up (col-span-6) → md 3-up (col-span-4) → lg 5-up (col-span-2).
+              No orphans because 5 cols × 6 = 30/12 = 2.5 rows, the
+              last col is centred via lg:first-of-type:col-start-5 at lg+. */}
           {COLUMNS.map((col) => (
             <div key={col.title} className="col-span-6 md:col-span-4 lg:col-span-2 lg:first-of-type:col-start-5">
               <p className="t-eyebrow text-orange-400 mb-5">{col.title}</p>
@@ -116,7 +120,7 @@ export default function FooterSerious() {
 
       {/* Regulatory + © */}
       <div className="container-wide py-8 md:py-10">
-        <div className="grid grid-cols-12 gap-8 mb-6">
+        <div className="grid grid-cols-12 gap-x-0 sm:gap-x-6 lg:gap-x-8 gap-y-8 mb-6">
           <div className="col-span-12 lg:col-span-8">
             <p className="t-eyebrow text-white/45 mb-3">Regulatory Information</p>
             <p className="text-[12.5px] text-white/55 leading-relaxed max-w-3xl">

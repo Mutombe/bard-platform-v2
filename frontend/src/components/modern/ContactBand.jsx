@@ -12,8 +12,8 @@ import { ArrowRightIcon } from "@phosphor-icons/react";
 export default function ContactBand() {
   return (
     <section className="surface-navy">
-      <div className="container-wide py-20 md:py-28">
-        <div className="grid grid-cols-12 gap-x-10 gap-y-12">
+      <div className="container-wide py-24 md:py-32 lg:py-40">
+        <div className="grid grid-cols-12 gap-x-0 lg:gap-x-10 gap-y-12 md:gap-y-14">
           {/* Left — institutional CTA */}
           <div className="col-span-12 lg:col-span-7">
             <div className="flex items-center gap-3 mb-6">
@@ -28,12 +28,12 @@ export default function ContactBand() {
               The first conversation costs nothing and commits to nothing —
               it tells both of us whether the relationship makes sense.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <Link to="/contact" className="btn btn-orange">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+              <Link to="/contact" className="btn btn-orange w-full sm:w-auto justify-center">
                 Schedule a consultation
                 <ArrowRightIcon size={11} weight="bold" />
               </Link>
-              <Link to="/leadership" className="btn btn-outline-light">
+              <Link to="/leadership" className="btn btn-outline-light w-full sm:w-auto justify-center">
                 Meet our leadership
               </Link>
             </div>
