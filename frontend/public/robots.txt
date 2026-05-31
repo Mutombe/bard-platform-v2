@@ -1,0 +1,8 @@
+# Bard Santner Markets Inc robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://bardsantnerbank.com/sitemap.xml
+
+# Pre-empt aggressive social unfurlers
+Crawl-delay: 0

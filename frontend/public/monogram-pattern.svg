@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Bard Santner BS monogram repeating pattern.
+       Derived from the brand manual's "Pattern 2" (monogram repeat). -->
+  <defs>
+    <g id="bsMark">
+      <!-- Circle outline -->
+      <circle cx="20" cy="20" r="14" fill="none" stroke="#312f4d" stroke-width="1.4"/>
+      <!-- Vertical line bisecting the circle -->
+      <line x1="20" y1="6" x2="20" y2="34" stroke="#312f4d" stroke-width="1.4"/>
+      <!-- B device left -->
+      <path d="M 13 11 Q 16 11 16 14 Q 16 17 13 17 Q 16 17 16 20 Q 16 23 13 23"
+            fill="none" stroke="#312f4d" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- S device right (mirrored) -->
+      <path d="M 27 11 Q 24 11 24 14 Q 24 17 27 17 Q 24 17 24 20 Q 24 23 27 23"
+            fill="none" stroke="#312f4d" stroke-width="1.4" stroke-linecap="round"
+            transform="translate(40,0) scale(-1,1)"/>
+    </g>
+  </defs>
+  <use href="#bsMark" x="0" y="0"/>
+  <use href="#bsMark" x="40" y="0"/>
+  <use href="#bsMark" x="80" y="0"/>
+  <use href="#bsMark" x="20" y="40"/>
+  <use href="#bsMark" x="60" y="40"/>
+  <use href="#bsMark" x="100" y="40"/>
+  <use href="#bsMark" x="0" y="80"/>
+  <use href="#bsMark" x="40" y="80"/>
+  <use href="#bsMark" x="80" y="80"/>
+</svg>

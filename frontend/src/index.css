@@ -1,0 +1,744 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────────────────
+   Bard Santner Markets Inc — Design tokens.
+
+   Two design pressures held in tension:
+
+   1. The brand manual specifies Orange #EE7D36 and Dark Blue #312F4D as
+      primary corporate colours. Copperplate as primary typeface, Avenir as
+      secondary. The monogram is a circle containing a B & S device.
+
+   2. The Lloyds / AfrAsia / Investec UX brief asks for quiet confidence,
+      heavy whitespace, restrained chromatic accent. The brand colours sit
+      mostly as IDENTIFIER accents (CTAs, audience strip, sub-brand chips)
+      rather than flooding the canvas.
+
+   Gellix is the only typeface, body to display, micro to hero. The
+   only differentiators across the system are size, weight, letter-
+   spacing and case. Per the Lloyds canon — one family, governed
+   visually by hierarchy alone. Inter sits in the fallback stack so
+   weights 500/600/700 resolve cleanly when Gellix (Light + Regular)
+   doesn't ship those faces.
+
+   Token bumps applied 2026-05-30 per direction:
+   strategic — body 17px, headings +10%, hero unchanged.
+   Lloyds-grade interior padding — pills 18/28, cards 32/40, buttons 18/28.
+   Applied at @theme + @layer components level only so symmetry holds. */
+
+/* ─── Self-hosted Gellix ──────────────────────────────────────────────
+   Gellix shipped only as Light (300) and Regular (400). Declaring the
+   Regular face under each weight (400, 500, 600, 700) the design system
+   asks for lets the browser pick it without synthesizing bold — the
+   weight-range syntax was confusing some browsers and the font wasn't
+   resolving at all. */
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gellix";
+  src: url("/fonts/Gellix-Regular.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* ═══ V2 PALETTE — Brand + Heritage Accents + Aged Surfaces ═══
+     v1 ran orange + navy + bone. v2 ADDS a heritage band (emerald,
+     burgundy, gold, indigo) for division-specific accents, plus
+     parchment / vermillion / patina for manuscript-style artifact
+     surfaces. None replaces the brand primaries — they sit alongside
+     for specific institutional jobs.
+  */
+
+  /* ─── Brand primaries (unchanged from v1) ─── */
+  --color-orange: #ee7d36;
+  --color-orange-50:  #fdf3eb;
+  --color-orange-100: #fbdfc6;
+  --color-orange-200: #f7c498;
+  --color-orange-300: #f3a565;
+  --color-orange-400: #f08c44;
+  --color-orange-500: #ee7d36;
+  --color-orange-600: #d96820;
+  --color-orange-700: #b35419;
+  --color-orange-800: #8a3f12;
+  --color-orange-900: #5e2b0c;
+
+  --color-navy: #312f4d;
+  --color-navy-50:  #ecebf3;
+  --color-navy-100: #cecde0;
+  --color-navy-200: #a8a6c2;
+  --color-navy-300: #7f7da4;
+  --color-navy-400: #5b587f;
+  --color-navy-500: #423f63;
+  --color-navy-600: #312f4d;
+  --color-navy-700: #25243a;
+  --color-navy-800: #1a192a;
+  --color-navy-900: #11101c;
+  --color-navy-950: #08070f;
+
+  /* ─── V2 NEW: Heritage accents ─────────────────────────────────────
+     One specific institutional job each. Used VERY sparingly —
+     marquees, division accents, seal stamps. Never as primary CTA. */
+
+  /* Gold — heritage marquees, wax seals, "founding" gestures, the
+     Wealth division's accent. Warm metallic. Pictet / Coutts canon. */
+  --color-gold-50:  #faf3e0;
+  --color-gold-100: #f3e3b5;
+  --color-gold-200: #e7c97c;
+  --color-gold-300: #d4ad53;
+  --color-gold-400: #b59052;   /* core gold — readable on dark */
+  --color-gold-500: #927244;
+  --color-gold-600: #6d5532;
+  --color-gold-700: #4a3a22;
+
+  /* Emerald — capital markets / discipline. Deep, slightly desaturated. */
+  --color-emerald-50:  #e6efe9;
+  --color-emerald-100: #b9d3c1;
+  --color-emerald-300: #5b8b73;
+  --color-emerald-500: #0a4a3c;   /* core */
+  --color-emerald-700: #053026;
+  --color-emerald-900: #021810;
+
+  /* Burgundy — wealth / private banking accent. Heritage cabernet. */
+  --color-burgundy-50:  #f3e6ea;
+  --color-burgundy-100: #d6b3c0;
+  --color-burgundy-300: #8e3f59;
+  --color-burgundy-500: #5b1a2e;   /* core */
+  --color-burgundy-700: #3a0e1c;
+  --color-burgundy-900: #1f060e;
+
+  /* Indigo — institutional / treasury accent. Deeper than navy. */
+  --color-indigo-50:  #e8eaf3;
+  --color-indigo-100: #b8bfd9;
+  --color-indigo-300: #5e6a9e;
+  --color-indigo-500: #1e2a5e;   /* core */
+  --color-indigo-700: #131a3b;
+  --color-indigo-900: #080c1c;
+
+  /* ─── Neutrals — quiet foundation (unchanged from v1) ─── */
+  --color-ink:   #0c0a14;
+  --color-coal:  #1a1822;
+  --color-bone-50:  #fafaf7;
+  --color-bone-100: #f4f3ee;
+  --color-bone-200: #e8e6dd;
+  --color-bone-300: #d4d1c6;
+  --color-bone-400: #a8a59a;
+  --color-bone-500: #6b6960;
+  --color-bone-600: #4a4942;
+  --color-bone-700: #2f2e2a;
+
+  /* ─── Aged + warm white surfaces ─── */
+  --color-milk:  #faf5e8;
+  --color-smoke: #efe7d4;
+  --color-paper: #fdfbf5;
+
+  /* V2 NEW: Manuscript / artifact surfaces */
+  --color-parchment: #f0e8d0;   /* aged paper — for manuscript-style sections */
+  --color-vellum:    #e8dec0;   /* deeper parchment for cartouches */
+  --color-vermillion: #8a2a1a;  /* manuscript ink red — used in marks/notations */
+  --color-patina:    #2a3e35;   /* aged bronze patina — alternative dark */
+
+  /* ─── Functional accents — used very sparingly ─── */
+  --color-signal:  #b35419;
+  --color-success: #145488;
+  --color-error:   #88120e;
+  --color-warn:    #c9a04d;
+
+  /* ═══ V2 TYPE SYSTEM — Five faces, governed by job ═══ */
+
+  /* Onest — body + UI utility (carried from v1) */
+  --font-display: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
+  --font-display-alt: "Onest Variable", "Gellix", "Inter", system-ui, sans-serif;
+  --font-body: "Onest Variable", "Gellix", "Inter", "Avenir Next", system-ui, sans-serif;
+
+  /* Fraunces — display serif (heritage voice, the institutional headline) */
+  --font-hero-display: "Fraunces Variable", "Fraunces", "Iowan Old Style",
+                        "Garamond", "Hoefler Text", "Times New Roman", serif;
+
+  /* V2 NEW: Bricolage Grotesque — display sans with character. The
+     "modern editorial sans" voice. Used for eyebrows that need more
+     character than the small-caps default, ticker callouts, sub-
+     section labels where Fraunces would be too heritage. */
+  --font-grotesk: "Bricolage Grotesque Variable", "Bricolage Grotesque",
+                   "Onest Variable", "Inter", system-ui, sans-serif;
+
+  /* V2 NEW: Cormorant Garamond Italic — accent serif for italic
+     pull-quotes, dates, manuscript flourishes, and the editorial
+     marginalia. The "annotated edition" voice. */
+  --font-accent-italic: "Cormorant Garamond Variable", "Cormorant Garamond",
+                         "Iowan Old Style", "Garamond", serif;
+
+  /* V2 NEW: JetBrains Mono — data + tickers + tabular figures + ISIN
+     codes + ledger entries. Real-time-data voice. */
+  --font-mono: "JetBrains Mono", "SF Mono", "Menlo", "Consolas",
+                ui-monospace, monospace;
+
+  /* Display + body sizes (declared below — unchanged from v1).
+     V2 keeps the type scale because the type system change is about
+     FACE not SIZE — the hierarchy still reads the same. */
+  --text-display-hero:  clamp(2.75rem, 7vw, 6.5rem);
+  --text-display-xl:    clamp(2.5rem, 6vw, 5rem);
+  --text-display-lg:    clamp(2rem, 4.5vw, 3.5rem);
+  --text-display-md:    clamp(1.75rem, 3.4vw, 2.5rem);
+
+  /* Body scale up to 17px so all paragraph text inherits the strategic
+     bump. Headings carry their own clamp() above. */
+  --text-body-base: 1.0625rem;   /* 17px */
+  --text-body-lg:   1.1875rem;   /* 19px */
+  --text-body-xl:   1.3125rem;   /* 21px */
+
+  /* Section + container padding.
+     Mobile floor lifted: section bottom-/top-padding floors at 4.5rem
+     (72px) so the rhythm reads "confident" not "compressed" on a 375px
+     viewport. Container-x floors at 1.5rem (24px) — the Lloyds breathing
+     margin. The same clamps still scale up at desktop. */
+  --section-pad-y:    clamp(4.5rem, 8vw, 8rem);
+  --section-pad-y-lg: clamp(6rem, 12vw, 12rem);
+  --container-pad-x:  clamp(1.5rem, 4vw, 2.5rem);
+
+  /* ─── Component-interior padding tokens (Lloyds-grade) ───────────────
+     Centralised here so every consumer scales coherently and symmetry
+     across cards / pills / buttons / sections is preserved.
+     Mobile floors are deliberately smaller than desktop — at 343px
+     content width, a 32px card-pad leaves 279px for the body which
+     reads cramped; 24px leaves 295px which is the institutional sweet
+     spot. Desktop is unchanged. */
+  --pad-pill-y: 1.125rem;     /* 18px */
+  --pad-pill-x: 1.75rem;      /* 28px */
+  --pad-btn-y:  1.125rem;     /* 18px */
+  --pad-btn-x:  1.75rem;      /* 28px */
+  --pad-card:   1.5rem;       /* 24px — mobile / default */
+  --pad-card-md: 2rem;        /* 32px — md (≥768) breakpoint */
+  --pad-card-lg: 2.5rem;      /* 40px — lg (≥1024) breakpoint */
+
+  --shadow-card: 0 1px 2px rgba(12,10,20,0.04), 0 8px 24px rgba(12,10,20,0.06);
+  --shadow-card-lift: 0 2px 4px rgba(12,10,20,0.06), 0 16px 40px rgba(12,10,20,0.10);
+  --shadow-hero: 0 24px 80px rgba(12,10,20,0.18);
+}
+
+/* ─── Base layer ─── */
+@layer base {
+  html { scroll-behavior: smooth; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  /* Body bumped to 17px / 1.6 line-height as the institutional reading default.
+     Every paragraph inherits, every component picks it up through em-based sizing,
+     so symmetry holds across the system. */
+  body { font-family: var(--font-body); color: var(--color-bone-700); background: var(--color-milk); font-feature-settings: "kern","liga","calt","ss01"; font-size: var(--text-body-base); line-height: 1.6; margin: 0; }
+  /* All headings live on Gellix Regular (400). Letter-spacing tightens
+     slightly to give large display sizes the right optical density. */
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--color-navy-600); font-weight: 500; letter-spacing: -0.022em; line-height: 1.08; margin: 0; }
+  h1 { font-weight: 500; letter-spacing: -0.028em; }
+  p  { color: var(--color-bone-600); margin: 0; }
+  a  { color: inherit; text-decoration: none; }
+  ::selection { background: var(--color-orange-500); color: white; }
+  :focus-visible { outline: 2px solid var(--color-orange-500); outline-offset: 3px; border-radius: 2px; }
+  img { display: block; max-width: 100%; height: auto; }
+}
+
+/* ─── Component primitives ─── */
+@layer components {
+  .container-bank { width: 100%; max-width: 1440px; margin-inline: auto; padding-inline: var(--container-pad-x); }
+
+  /* Display typography — Fraunces Variable across all four tiers.
+     The "hack the bank look" move applied site-wide. Every display-
+     tier headline wears the serif; smaller card titles (inline
+     font-display text-[20px] etc.), eyebrows, body, buttons, nav,
+     brand marks all stay on Onest sans.
+
+     Per-tier tuning:
+       • Letter-spacing climbs (less negative) as size descends —
+         serif joins collide if you tighten further at smaller sizes
+       • Font-variation-settings dial SOFT (sharp ↔ rounded serifs)
+         and opsz (optical size) progressively
+       • Weight notches up at smaller sizes — serifs need more body
+         to read at headline scale once they're not display-huge
+     OpenType features (kern, liga, calt, onum, lnum) enabled on all
+     four tiers so kerning + old-style numerals come along free. */
+  .display-hero {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-hero);
+    line-height: 1.02;
+    letter-spacing: -0.014em;
+    font-weight: 520;
+    font-variation-settings: "SOFT" 40, "opsz" 96;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
+  .display-xl {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-xl);
+    line-height: 1.04;
+    letter-spacing: -0.012em;
+    font-weight: 540;
+    font-variation-settings: "SOFT" 38, "opsz" 72;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
+  .display-lg {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-lg);
+    line-height: 1.08;
+    letter-spacing: -0.008em;
+    font-weight: 540;
+    font-variation-settings: "SOFT" 35, "opsz" 56;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
+  .display-md {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-md);
+    line-height: 1.12;
+    letter-spacing: -0.006em;
+    font-weight: 540;
+    font-variation-settings: "SOFT" 32, "opsz" 40;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
+
+  /* Legacy alias — .display-hero-serif kept pointing to .display-hero
+     so the HomeHeroCarousel and any other consumers don't break. */
+  .display-hero-serif {
+    font-family: var(--font-hero-display);
+    font-size: var(--text-display-hero);
+    line-height: 1.02;
+    letter-spacing: -0.014em;
+    font-weight: 520;
+    font-variation-settings: "SOFT" 40, "opsz" 96;
+    font-feature-settings: "kern", "liga", "calt", "onum", "lnum";
+  }
+
+  /* No-op kept for backwards-compatibility; italics removed sitewide
+     per institutional brief — Lloyds, AfrAsia and Investec do not use
+     italic emphasis in their canonical headlines. */
+  .italic-accent { font-style: normal; }
+
+  /* Eyebrow — Gellix uppercase with generous tracking. The institutional
+     gesture is the spacing and the case, not a different typeface. */
+  .eyebrow { font-family: var(--font-mono); font-size: 0.75rem; line-height: 1; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-bone-500); font-weight: 500; }
+
+  /* Active audience tab — sharp rectangular block, navy strip → white
+     tab, no curves, no flares, no under-rule. The white pulled out of
+     the navy carries the active state by itself. */
+  .tab-active {
+    background: white;
+    color: var(--color-navy-700);
+  }
+  .eyebrow-on-dark { color: rgba(255,255,255,0.55); }
+  .eyebrow-accent  { color: var(--color-orange-600); }
+
+  /* Buttons — Lloyds-grade interior padding (18/28). Read these tokens
+     so every button on the site scales together. */
+  .btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: var(--pad-btn-y) var(--pad-btn-x); font-family: var(--font-body); font-weight: 600; font-size: 1rem; line-height: 1; border-radius: 9999px; transition: all 200ms ease; cursor: pointer; white-space: nowrap; border: 1px solid transparent; }
+  .btn-primary { background: var(--color-orange-500); color: white; }
+  .btn-primary:hover { background: var(--color-orange-600); }
+  .btn-primary:active { background: var(--color-orange-700); }
+  .btn-navy { background: var(--color-navy-600); color: white; }
+  .btn-navy:hover { background: var(--color-navy-700); }
+  .btn-ghost-light { background: var(--color-paper); color: var(--color-navy-600); border-color: var(--color-bone-300); }
+  .btn-ghost-light:hover { background: var(--color-milk); border-color: var(--color-navy-600); }
+  .btn-ghost-dark { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-ghost-dark:hover { background: rgba(255,255,255,0.08); border-color: white; }
+
+  /* Hero CTAs — outline-only, bold 2px border. The buttons under a
+     full-bleed hero need to NOT compete with the photograph for
+     attention; the border carries the action, the bg never fills.
+     The primary uses a solid white border with a brand-orange hover
+     fill; the secondary uses a half-opacity white border with a
+     subtle white tint on hover. Same gesture, two weights. */
+  .btn-hero-primary { background: transparent; color: white; border: 2px solid white; padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-primary:hover { background: var(--color-orange-500); color: white; border-color: var(--color-orange-500); }
+  .btn-hero-ghost { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.45); padding: calc(var(--pad-btn-y) - 1px) calc(var(--pad-btn-x) - 1px); }
+  .btn-hero-ghost:hover { background: rgba(255,255,255,0.08); border-color: white; }
+
+  /* Pills — Lloyds quick-action strip pattern. Generous interior padding
+     (18/28) signals confidence in the same gesture Lloyds uses to push
+     their primary-action chips above the average. On mobile the
+     horizontal padding tightens to 18px so the label has room inside a
+     ~165px-wide 2-col pill at 375px viewport. */
+  .pill { display: inline-flex; align-items: center; justify-content: space-between; gap: 0.5rem; padding: var(--pad-pill-y) 1.125rem; background: white; color: var(--color-navy-600); border-radius: 0.5rem; font-weight: 500; font-size: 1rem; line-height: 1.2; transition: all 200ms ease; border: 1px solid transparent; min-height: 3.5rem; }
+  @media (min-width: 768px) { .pill { padding: var(--pad-pill-y) var(--pad-pill-x); gap: 1rem; } }
+  .pill:hover { box-shadow: var(--shadow-card-lift); transform: translateY(-1px); }
+
+  /* Outline-pill variant for QuickActionStrip — transparent infill so
+     the navy strip shows through, bold 2px white border, white text,
+     hover fills subtly. Same brand discipline as the hero CTAs:
+     borders carry the action, fills are reserved for the moment of
+     commitment. */
+  .pill-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    padding: calc(var(--pad-pill-y) - 1px) calc(1.125rem - 1px);
+  }
+  @media (min-width: 768px) {
+    .pill-outline {
+      padding: calc(var(--pad-pill-y) - 1px) calc(var(--pad-pill-x) - 1px);
+    }
+  }
+  .pill-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: white;
+    color: white;
+    box-shadow: none;
+    transform: translateY(-1px);
+  }
+
+  .hover-line { position: relative; display: inline-block; }
+  .hover-line::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform 240ms ease; }
+  .hover-line:hover::after { transform: scaleX(1); transform-origin: left; }
+
+  /* Cards — base white card. Inner padding is applied where the card body
+     starts, so a card with an image header keeps the image flush-edge
+     while the text block underneath gets the generous Lloyds padding. */
+  .bank-card { background: white; border-radius: 0.875rem; overflow: hidden; transition: box-shadow 240ms ease, transform 240ms ease; }
+  .bank-card:hover { box-shadow: var(--shadow-card-lift); transform: translateY(-2px); }
+  /* Card-body utility — applies the responsive padding rhythm. Mobile
+     gets 24px (the institutional sweet spot at 343px content width),
+     md gets 32px, lg gets 40px. One utility, three breakpoints. */
+  .bank-card-body { padding: var(--pad-card); }
+  @media (min-width: 768px)  { .bank-card-body { padding: var(--pad-card-md); } }
+  @media (min-width: 1024px) { .bank-card-body-lg { padding: var(--pad-card-lg); } }
+
+  .section { padding-block: var(--section-pad-y); }
+  .section-lg { padding-block: var(--section-pad-y-lg); }
+  .hairline { height: 1px; background: var(--color-bone-200); border: 0; margin: 0; }
+  .hairline-dark { height: 1px; background: rgba(255,255,255,0.10); border: 0; margin: 0; }
+
+  .monogram-bg { position: relative; isolation: isolate; }
+  .monogram-bg::before { content: ""; position: absolute; inset: 0; background-image: url("/monogram-pattern.svg"); background-size: 120px; background-repeat: repeat; opacity: 0.04; z-index: -1; pointer-events: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   V2 ARTIFACT LAYER — patterns, ornaments, cartouches.
+
+   Everything below this comment is new in v2. The job is to give the
+   site BRAND ARTIFACTS: monogram patterns, hairline grids, corner
+   trim marks, wax-seal stamps, ornamental dividers. The artifacts
+   are surgical — never blanket. Each is a small library of CSS
+   utilities that page-level components compose.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* ── Type-system utilities for the new v2 faces ──────────────── */
+
+  /* Grotesk display — Bricolage Grotesque with character. For sub-
+     section eyebrows, ticker callouts, sidebar labels. Tighter
+     tracking than Onest. Variable wdth axis can be set inline. */
+  .font-grotesk { font-family: var(--font-grotesk); font-feature-settings: "kern","liga","calt"; }
+
+  /* Accent italic — Cormorant Garamond italic. For pull-quotes,
+     dates rendered editorially, manuscript marginalia, "vol. ii"
+     style flourishes. */
+  .font-accent { font-family: var(--font-accent-italic); font-style: italic; font-feature-settings: "kern","liga","calt"; }
+
+  /* Mono — JetBrains Mono. For tickers, ISIN codes, account numbers,
+     ledger amounts, the dashboard's tabular figures. */
+  .font-mono-data { font-family: var(--font-mono); font-feature-settings: "tnum","zero","ss01"; font-variant-numeric: tabular-nums; }
+
+  /* Display variants that ride the grotesk face for specific moments
+     where the heritage serif would be too heavy. */
+  .display-grotesk-xl {
+    font-family: var(--font-grotesk);
+    font-size: var(--text-display-xl);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    font-weight: 580;
+    font-variation-settings: "wdth" 102;
+  }
+  .display-grotesk-lg {
+    font-family: var(--font-grotesk);
+    font-size: var(--text-display-lg);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    font-weight: 580;
+    font-variation-settings: "wdth" 100;
+  }
+
+  /* ── Eyebrow variants for v2 ─────────────────────────────────── */
+
+  /* Eyebrow with leading rule + small caps. The "§ 02 · Wealth"
+     pattern from v1, but now with the rule baked in. Three-element
+     composition: 2px orange bar, eyebrow text, optional roman numeral. */
+  .eyebrow-rule {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-grotesk);
+    font-size: 0.75rem;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-orange-700);
+    font-weight: 600;
+  }
+  .eyebrow-rule::before {
+    content: "";
+    width: 2.25rem;
+    height: 2px;
+    background: var(--color-orange-500);
+    display: inline-block;
+  }
+  .eyebrow-rule-on-dark { color: var(--color-orange-400); }
+  .eyebrow-rule-gold { color: var(--color-gold-300); }
+  .eyebrow-rule-gold::before { background: var(--color-gold-400); }
+
+  /* Accent date — manuscript-italic with thin underline. For dates
+     on insight articles, "Established 2025 · Harare" footnotes,
+     "Vol. I" markers. */
+  .accent-date {
+    font-family: var(--font-accent-italic);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  /* ── Brand artifacts ─────────────────────────────────────────── */
+
+  /* Monogram tile — repeating BS device backdrop. Uses the existing
+     /monogram-pattern.svg shipped with v1. Opacity tunable per
+     section. Wrap a section in .artifact-monogram to get the pattern
+     behind its content with default 4% opacity. */
+  .artifact-monogram { position: relative; isolation: isolate; }
+  .artifact-monogram::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/monogram-pattern.svg");
+    background-size: 140px;
+    background-repeat: repeat;
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
+  }
+  /* Variants — stronger/weaker pattern saturation */
+  .artifact-monogram-strong::before { opacity: 0.09; background-size: 120px; }
+  .artifact-monogram-soft::before { opacity: 0.025; background-size: 180px; }
+  /* On dark surfaces */
+  .artifact-monogram-dark::before { opacity: 0.08; filter: invert(1); }
+
+  /* Hairline grid — 1px grid overlay (24px cells). Architectural
+     drafting paper effect. Used on hero sections to give a sense
+     of underlying structure. */
+  .artifact-grid {
+    background-image:
+      linear-gradient(to right, rgba(49,47,77,0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(49,47,77,0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .artifact-grid-dark {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Corner trim marks — paper-cut registration marks at each
+     corner of a hero/section. The four small L-brackets that
+     editorial publishers print at the corners of magazine pages
+     so the printer knows the trim line. Pure CSS. */
+  .corner-marks { position: relative; }
+  .corner-marks::before,
+  .corner-marks::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-color: currentColor;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .corner-marks::before {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+  }
+  .corner-marks::after {
+    bottom: 12px;
+    right: 12px;
+    border-bottom: 1px solid;
+    border-right: 1px solid;
+  }
+  /* For the OTHER two corners we use a wrapping element with class
+     .corner-marks-full plus pseudo-elements via nested ::before/::after
+     on a sibling. Cleaner inline solution: render <span class="cm-tl">,
+     <span class="cm-tr"> etc. as actual elements. See CornerMarks.jsx. */
+
+  /* Cartouche frame — a thin double-line border that wraps a brand
+     mark. Heritage gesture. Used for sub-brand "BARD SANTNER WEALTH"
+     blocks, founding-date seals, division marks. */
+  .cartouche {
+    border: 1px solid currentColor;
+    box-shadow: inset 0 0 0 3px transparent, inset 0 0 0 4px currentColor;
+    padding: 1.25rem 1.5rem;
+    position: relative;
+  }
+  /* Cartouche with corner ornaments — adds tiny diamond marks at the
+     four corners. Editorial illuminated-manuscript move. */
+  .cartouche-ornate::before,
+  .cartouche-ornate::after {
+    content: "◆";
+    position: absolute;
+    font-size: 8px;
+    line-height: 1;
+    color: currentColor;
+  }
+  .cartouche-ornate::before { top: -4px; left: 50%; transform: translateX(-50%); }
+  .cartouche-ornate::after { bottom: -4px; left: 50%; transform: translateX(-50%); }
+
+  /* Ornament rule — a horizontal hairline with a centred typographic
+     ornament. The "§" or "◆" or "❦" between sections. Heritage
+     editorial divider. */
+  .ornament-rule {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    color: var(--color-bone-400);
+  }
+  .ornament-rule::before,
+  .ornament-rule::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.45;
+  }
+
+  /* Wax-seal stamp — small circular brand mark with cross-hatched
+     texture. For trust pages, contracts, "founding" marks. Pure
+     CSS with conic gradient. */
+  .seal-stamp {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 9999px;
+    background: var(--color-burgundy-500);
+    color: var(--color-gold-200);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,0.15),
+      inset 0 0 0 6px var(--color-burgundy-500),
+      inset 0 0 0 7px var(--color-gold-400),
+      0 4px 18px rgba(91,26,46,0.35);
+    transform: rotate(-4deg);
+  }
+  .seal-stamp::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background:
+      repeating-conic-gradient(
+        rgba(255,255,255,0.04) 0deg 12deg,
+        transparent 12deg 24deg
+      );
+    pointer-events: none;
+  }
+
+  /* Drop-cap — first letter of a paragraph rendered as an
+     illuminated cap. Used on the About manifesto and editorial
+     intros. */
+  .drop-cap::first-letter {
+    font-family: var(--font-hero-display);
+    font-size: 4.5em;
+    line-height: 0.88;
+    float: left;
+    margin: 0.05em 0.12em 0 0;
+    color: var(--color-orange-600);
+    font-weight: 540;
+    font-variation-settings: "SOFT" 30, "opsz" 144;
+  }
+
+  /* Ticker chip — small mono-bordered chip carrying a code. Used in
+     GroupRibbon ticker (BSMFB etc.), insight bylines, footer
+     watermark. */
+  .ticker-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid currentColor;
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
+  }
+  .ticker-chip:hover { opacity: 1; }
+
+  /* Manuscript section number — large roman numeral on the left of a
+     section, like a chapter mark. Heritage editorial gesture. */
+  .section-numeral {
+    font-family: var(--font-hero-display);
+    font-size: clamp(3.5rem, 6vw, 5rem);
+    line-height: 0.85;
+    font-weight: 540;
+    font-variation-settings: "SOFT" 40, "opsz" 96;
+    color: var(--color-orange-500);
+    opacity: 0.85;
+    letter-spacing: 0;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty  { text-wrap: pretty; }
+  .no-tap-highlight { -webkit-tap-highlight-color: transparent; }
+
+  /* Mobile-only scroll lock — when the nav drawer opens we want the
+     underlying page frozen so the drawer carries the full focus. */
+  .scroll-lock { overflow: hidden; touch-action: none; }
+
+  /* Confidence-aware mobile gap — utility for sections that need a
+     deliberate extra beat of vertical breathing on small viewports
+     without changing the desktop rhythm. */
+  .mb-confident { margin-bottom: 2.5rem; }
+  @media (min-width: 768px) { .mb-confident { margin-bottom: 4rem; } }
+}
+
+/* ─── Mobile polish — global rules that apply only to small viewports.
+   Two principles:
+     1. Touch targets — every interactive element ≥44×44 effective.
+     2. Type that doesn't ant-walk — small body text gets a slight
+        nudge so paragraphs read without leaning in. */
+@media (max-width: 767px) {
+  /* Anchor / button minimum tap area — only applies to inline links
+     inside paragraphs (the small ones); buttons already meet 44px via
+     their own padding. */
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  /* Slightly relax tracking on caps eyebrows for mobile readability — the
+     standard 0.22em is loud at 12px on narrow screens. */
+  .eyebrow { letter-spacing: 0.18em; }
+
+  /* No-scrollbar on horizontal mobile scroll strips. */
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
