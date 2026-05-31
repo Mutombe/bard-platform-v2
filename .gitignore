@@ -5,3 +5,4 @@ frontend/.vite/
 *.log
 .env
 .env.local
+frontend/src/_archive_v1_legacy/
