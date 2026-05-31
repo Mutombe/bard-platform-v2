@@ -1,0 +1,4 @@
+# Render / Netlify SPA fallback. Every unmatched route serves index.html,
+# which boots the React router and resolves client-side. Prerendered routes
+# have their own dist/<route>/index.html files and are served directly.
+/*    /index.html   200

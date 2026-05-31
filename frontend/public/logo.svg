@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <!-- Bard Santner monogram — circle with B+S device. Orange device,
+       white interior, derived from the brand manual. -->
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#EE7D36" stroke-width="6"/>
+  <!-- Central vertical bisector -->
+  <line x1="60" y1="14" x2="60" y2="106" stroke="#EE7D36" stroke-width="6"/>
+  <!-- B device on left half -->
+  <path d="M 38 28 Q 50 28 50 40 Q 50 52 38 52 Q 50 52 50 64 Q 50 76 38 76 L 38 76"
+        fill="none" stroke="#EE7D36" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- S device on right half — mirrored B with curved opening -->
+  <path d="M 82 28 Q 70 28 70 40 Q 70 52 82 52 Q 70 52 70 64 Q 70 76 82 76 L 82 76"
+        fill="none" stroke="#EE7D36" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
